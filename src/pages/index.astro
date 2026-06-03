@@ -1,0 +1,487 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const GITHUB_URL = 'https://github.com/Doebele/application-pal';
+const INSTALL_URL = '/application-pal-website/install';
+
+const features = [
+  {
+    icon: '🤖',
+    title: 'AI Coaching',
+    desc: 'Get instant feedback on your cover letters and application materials. Local AI keeps your data private.',
+  },
+  {
+    icon: '📋',
+    title: 'Kanban Board',
+    desc: 'Visualise your pipeline from "Wishlist" to "Offer". Drag and drop applications through every stage.',
+  },
+  {
+    icon: '📅',
+    title: 'Calendar View',
+    desc: 'Never miss an interview. See deadlines, follow-ups, and scheduled calls in one integrated calendar.',
+  },
+  {
+    icon: '📁',
+    title: 'Google Drive',
+    desc: 'Attach CVs, cover letters, and portfolios directly from Google Drive — no re-uploading required.',
+  },
+  {
+    icon: '👥',
+    title: 'Multi-user',
+    desc: 'Built for households and cohorts. Multiple accounts on the same self-hosted instance, zero extra cost.',
+  },
+  {
+    icon: '🏠',
+    title: 'Local AI support',
+    desc: 'Run Ollama locally for fully private AI coaching. No API keys, no cloud, no data leaving your machine.',
+  },
+];
+
+const steps = [
+  {
+    num: '1',
+    title: 'Run one command',
+    desc: 'docker compose up — the full stack starts in under a minute.',
+    code: 'docker compose up -d',
+  },
+  {
+    num: '2',
+    title: 'Create your account',
+    desc: 'Open localhost:3000, register, and you\'re in. No email verification, no credit card.',
+    code: 'open http://localhost:3000',
+  },
+  {
+    num: '3',
+    title: 'Start tracking',
+    desc: 'Add your first application, move it through the board, and let AI coaching do the rest.',
+    code: null,
+  },
+];
+---
+
+<Layout>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/application-pal-website/" class="nav-logo">
+        <span class="logo-icon">📎</span>
+        <span>application-pal</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/application-pal-website/install">Install</a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener" class="github-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href={INSTALL_URL} class="btn-nav">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="badge">Open source · Local-first · Free forever</div>
+      <h1 class="hero-title">
+        Job applications,<br />
+        <span class="accent">finally organised.</span>
+      </h1>
+      <p class="hero-sub">
+        application-pal is a self-hosted job tracker with AI coaching,
+        a Kanban board, and a calendar — running entirely on your machine.
+        Your data stays yours.
+      </p>
+      <div class="hero-ctas">
+        <a href={INSTALL_URL} class="btn-primary">Get started — it's free</a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="hero-stars">
+        <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener">
+          <img
+            src="https://img.shields.io/github/stars/Doebele/application-pal?style=flat&logo=github&labelColor=0d1117&color=58a6ff"
+            alt="GitHub stars"
+            width="120"
+            height="20"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section features" id="features">
+    <div class="container">
+      <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+      <p class="section-sub">Built for job seekers who want full control over their search — and their data.</p>
+      <div class="features-grid">
+        {features.map(f => (
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">{f.icon}</span>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Up and running in minutes.</h2>
+      <p class="section-sub">No cloud accounts, no configuration files, no surprises.</p>
+      <ol class="steps">
+        {steps.map(s => (
+          <li class="step">
+            <div class="step-num">{s.num}</div>
+            <div class="step-content">
+              <h3 class="step-title">{s.title}</h3>
+              <p class="step-desc">{s.desc}</p>
+              {s.code && (
+                <pre class="step-code"><code>{s.code}</code></pre>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section social" id="social">
+    <div class="container">
+      <h2 class="section-title">Built in the open.</h2>
+      <div class="social-inner">
+        <div class="stars-block">
+          <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener" class="stars-link">
+            <img
+              src="https://img.shields.io/github/stars/Doebele/application-pal?style=for-the-badge&logo=github&labelColor=161b22&color=58a6ff"
+              alt="GitHub Stars"
+              width="160"
+              height="28"
+              loading="lazy"
+            />
+          </a>
+          <p class="stars-cta">Star on GitHub to follow development</p>
+        </div>
+        <blockquote class="quote">
+          <p>"[Placeholder] application-pal has completely changed how I manage my job search. The AI coaching alone is worth it."</p>
+          <footer>— Beta user feedback placeholder</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL CTA -->
+  <section class="section install-cta" id="install">
+    <div class="container">
+      <h2 class="section-title">Try it now. Own your data.</h2>
+      <p class="section-sub">One command. Runs on any machine with Docker.</p>
+      <pre class="install-code"><code>{`# Clone and start
+git clone https://github.com/Doebele/application-pal.git
+cd application-pal
+docker compose up -d`}</code></pre>
+      <div class="install-actions">
+        <a href={INSTALL_URL} class="btn-primary">Full install guide</a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub repo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">📎</span>
+        <span>application-pal</span>
+      </div>
+      <div class="footer-links">
+        <a href={GITHUB_URL} target="_blank" rel="noopener">GitHub</a>
+        <a href={INSTALL_URL}>Install</a>
+        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
+          <img
+            src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=161b22&color=3fb950"
+            alt="MIT License"
+            width="80"
+            height="20"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 17, 23, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 1rem;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo-icon { font-size: 1.25rem; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.9rem;
+  }
+  .nav-links a { color: var(--text-muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .github-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn-nav {
+    background: var(--accent);
+    color: #0d1117 !important;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: opacity 0.15s;
+  }
+  .btn-nav:hover { opacity: 0.85; text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .badge {
+    display: inline-block;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .accent { color: var(--accent); }
+  .hero-sub {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0d1117;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: opacity 0.15s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.88; text-decoration: none; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-secondary:hover { background: var(--bg3); border-color: var(--accent); text-decoration: none; }
+  .hero-stars { margin-top: -0.5rem; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 0; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+  }
+
+  /* FEATURES */
+  .features { background: var(--bg2); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .feature-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-glow), 0 4px 16px var(--accent-glow);
+  }
+  .feature-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+  .feature-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .feature-desc { color: var(--text-muted); font-size: 0.93rem; line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #0d1117;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  .step-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
+  .step-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+  .step-code {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.65rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--green);
+    overflow-x: auto;
+  }
+
+  /* SOCIAL PROOF */
+  .social { background: var(--bg2); }
+  .social-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .stars-block { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .stars-link { display: inline-block; }
+  .stars-cta { color: var(--text-muted); font-size: 0.85rem; }
+  .quote {
+    max-width: 480px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+  .quote p { font-style: italic; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .quote footer { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* INSTALL CTA */
+  .install-code {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--green);
+    overflow-x: auto;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  .install-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    background: var(--bg2);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.9rem;
+  }
+  .footer-links a { color: var(--text-muted); }
+  .footer-links a:hover { color: var(--text); text-decoration: none; }
+</style>

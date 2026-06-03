@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const GITHUB_URL = 'https://github.com/Doebele/application-pal';
+---
+
+<Layout
+  title="Install application-pal — Docker Quickstart"
+  description="Step-by-step guide to install application-pal with Docker. Get your local job tracker running in under five minutes."
+>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/application-pal-website/" class="nav-logo">
+        <span class="logo-icon">📎</span>
+        <span>application-pal</span>
+      </a>
+      <nav class="nav-links">
+        <a href={GITHUB_URL} target="_blank" rel="noopener" class="github-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="install-page">
+    <div class="container">
+      <div class="page-header">
+        <h1>Quickstart Install</h1>
+        <p class="page-sub">
+          application-pal runs entirely in Docker. You need nothing else installed except Docker Desktop.
+        </p>
+      </div>
+
+      <!-- PREREQUISITES -->
+      <section class="step-section">
+        <h2><span class="step-badge">Pre</span> Prerequisites</h2>
+        <ul class="req-list">
+          <li>
+            <strong>Docker Desktop</strong> — <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">download for Mac, Windows, or Linux</a>
+          </li>
+          <li>
+            <strong>Git</strong> — to clone the repo (or <a href={`${GITHUB_URL}/archive/refs/heads/main.zip`} target="_blank" rel="noopener">download the ZIP</a>)
+          </li>
+          <li>2 GB free disk space for images and database</li>
+        </ul>
+      </section>
+
+      <!-- STEP 1 -->
+      <section class="step-section">
+        <h2><span class="step-badge">1</span> Clone the repository</h2>
+        <p>Open your terminal and clone the project:</p>
+        <pre class="code-block"><code>git clone https://github.com/Doebele/application-pal.git
+cd application-pal</code></pre>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step-section">
+        <h2><span class="step-badge">2</span> Start the services</h2>
+        <p>Run Docker Compose in detached mode. This pulls the images and starts everything:</p>
+        <pre class="code-block"><code>docker compose up -d</code></pre>
+        <p class="note">
+          First run downloads container images — this takes 1–3 minutes depending on your connection.
+          Subsequent starts are fast.
+        </p>
+        <p>You should see output similar to:</p>
+        <pre class="code-block output"><code>[+] Running 3/3
+ ✔ Container application-pal-db-1       Started
+ ✔ Container application-pal-backend-1  Started
+ ✔ Container application-pal-app-1      Started</code></pre>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step-section">
+        <h2><span class="step-badge">3</span> Open the app</h2>
+        <p>Navigate to the app in your browser:</p>
+        <pre class="code-block"><code>http://localhost:3000</code></pre>
+        <p>Click <strong>Register</strong>, pick a username and password, and you're in.</p>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="step-section">
+        <h2><span class="step-badge">4</span> Add your first application</h2>
+        <p>
+          Once logged in, click <strong>+ New Application</strong> and fill in the company
+          name, role, and status. The Kanban board will show it in the <em>Wishlist</em> column.
+          Move it through stages as your process progresses.
+        </p>
+      </section>
+
+      <!-- AI COACHING (OPTIONAL) -->
+      <section class="step-section">
+        <h2><span class="step-badge">5</span> (Optional) Enable AI Coaching</h2>
+        <p>
+          application-pal supports two AI backends — you only need one:
+        </p>
+        <ul class="req-list">
+          <li>
+            <strong>OpenAI / cloud API</strong> — add your API key to the <code>.env</code> file
+            in the project root.
+          </li>
+          <li>
+            <strong>Local Ollama</strong> — <a href="https://ollama.com/download" target="_blank" rel="noopener">install Ollama</a>,
+            pull a model (<code>ollama pull llama3.2</code>), and point the config at
+            <code>http://host.docker.internal:11434</code>.
+          </li>
+        </ul>
+        <p>Detailed configuration options are in the project <a href={`${GITHUB_URL}#readme`} target="_blank" rel="noopener">README</a>.</p>
+      </section>
+
+      <!-- STOPPING -->
+      <section class="step-section">
+        <h2>Stopping &amp; updating</h2>
+        <pre class="code-block"><code># Stop containers (data is preserved)
+docker compose down
+
+# Pull latest updates
+git pull
+docker compose up -d --build</code></pre>
+      </section>
+
+      <!-- TROUBLESHOOTING -->
+      <section class="step-section">
+        <h2>Troubleshooting</h2>
+        <details class="faq">
+          <summary>Port 3000 is already in use</summary>
+          <p>
+            Edit <code>docker-compose.yml</code> and change <code>3000:3000</code> to
+            <code>3001:3000</code> (or any free port), then open <code>http://localhost:3001</code>.
+          </p>
+        </details>
+        <details class="faq">
+          <summary>Docker says "no configuration file provided"</summary>
+          <p>
+            Make sure you're in the <code>application-pal</code> directory and that
+            <code>docker-compose.yml</code> exists. Run <code>ls</code> to confirm.
+          </p>
+        </details>
+        <details class="faq">
+          <summary>App loads but shows a database error</summary>
+          <p>
+            Wait a few seconds and refresh — the database container may still be initialising.
+            If it persists, run <code>docker compose logs db</code> for details.
+          </p>
+        </details>
+      </section>
+
+      <div class="cta-block">
+        <p>Questions? Open an issue on GitHub — we respond quickly.</p>
+        <a href={`${GITHUB_URL}/issues`} target="_blank" rel="noopener" class="btn-primary">Open an issue</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">📎</span>
+        <span>application-pal</span>
+      </div>
+      <div class="footer-links">
+        <a href={GITHUB_URL} target="_blank" rel="noopener">GitHub</a>
+        <a href="/application-pal-website/">Home</a>
+        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
+          <img
+            src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=161b22&color=3fb950"
+            alt="MIT License"
+            width="80"
+            height="20"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13, 17, 23, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px; gap: 1rem;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none;
+  }
+  .logo-icon { font-size: 1.25rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem; }
+  .nav-links a { color: var(--text-muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .github-link { display: flex; align-items: center; gap: 0.4rem; }
+
+  .install-page { padding: 3rem 0 4rem; }
+  .page-header { margin-bottom: 3rem; }
+  .page-header h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+  .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; }
+
+  .step-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-section:last-of-type { border-bottom: none; }
+  .step-section h2 {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;
+  }
+  .step-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 28px; height: 28px;
+    background: var(--accent); color: #0d1117;
+    border-radius: 6px; font-size: 0.8rem; font-weight: 800;
+    padding: 0 6px;
+  }
+  .step-section p { color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.7; }
+
+  .code-block {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.25rem;
+    font-family: var(--font-mono); font-size: 0.9rem;
+    color: var(--green); overflow-x: auto; margin: 0.75rem 0;
+  }
+  .code-block.output { color: var(--text-muted); }
+
+  .note {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius); padding: 0.75rem 1rem;
+    font-size: 0.9rem; color: var(--text-muted) !important;
+  }
+
+  .req-list { padding-left: 1.25rem; color: var(--text-muted); }
+  .req-list li { margin-bottom: 0.5rem; line-height: 1.65; }
+  .req-list strong { color: var(--text); }
+  code {
+    font-family: var(--font-mono);
+    background: var(--bg2); border: 1px solid var(--border);
+    padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.875rem;
+  }
+
+  .faq {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 0.75rem;
+  }
+  .faq summary {
+    padding: 0.85rem 1rem; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+  }
+  .faq summary:hover { color: var(--accent); }
+  .faq p { padding: 0 1rem 0.85rem; color: var(--text-muted); font-size: 0.93rem; }
+
+  .cta-block {
+    text-align: center; padding: 2.5rem;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+    margin-top: 3rem;
+  }
+  .cta-block p { color: var(--text-muted); margin-bottom: 1rem; }
+  .btn-primary {
+    background: var(--accent); color: #0d1117;
+    padding: 0.75rem 1.75rem; border-radius: var(--radius);
+    font-weight: 700; font-size: 1rem; display: inline-block;
+    transition: opacity 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; text-decoration: none; }
+
+  .footer { border-top: 1px solid var(--border); padding: 2rem 0; background: var(--bg2); }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; }
+  .footer-links { display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem; }
+  .footer-links a { color: var(--text-muted); }
+  .footer-links a:hover { color: var(--text); text-decoration: none; }
+</style>
