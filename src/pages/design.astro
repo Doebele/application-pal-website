@@ -1,0 +1,668 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const colorPalette = [
+  { name: 'Background', variable: '--bg', hex: '#fff4e4', usage: 'Warm cream — primary background' },
+  { name: 'Background 2', variable: '--bg2', hex: '#fef8ee', usage: 'Lighter cream — section alternates' },
+  { name: 'Background 3', variable: '--bg3', hex: '#ffffff', usage: 'Pure white — cards & overlays' },
+  { name: 'Text', variable: '--text', hex: '#212121', usage: 'Nearly black — primary text' },
+  { name: 'Muted', variable: '--muted', hex: '#6b7f80', usage: 'Medium gray — secondary text' },
+  { name: 'Accent', variable: '--accent', hex: '#0a3e42', usage: 'Deep teal — primary brand' },
+  { name: 'Accent 2', variable: '--accent2', hex: '#dc143c', usage: 'Crimson — energy & CTAs' },
+  { name: 'Green', variable: '--green', hex: '#1a7045', usage: 'Success & positive actions' },
+  { name: 'Border', variable: '--border', hex: 'rgba(10,62,66,0.14)', usage: 'Subtle border color' },
+];
+---
+
+<Layout title="Design System — application-pal" description="Customizable design system for the application-pal marketing website">
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/application-pal-website/" class="nav-logo">
+        <span class="logo-mark">📎</span>
+        <span>application-pal</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/application-pal-website/">Home</a>
+        <a href="https://github.com/Doebele/application-pal" target="_blank" rel="noopener" class="nav-gh">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="design-page">
+    <section class="design-hero">
+      <div class="container">
+        <h1 class="design-hero-title" data-reveal>Design System</h1>
+        <p class="design-hero-sub" data-reveal>
+          The visual foundation for application-pal. All values are defined as CSS custom properties 
+          in <code>src/layouts/Layout.astro</code> — tweak once, apply everywhere.
+        </p>
+      </div>
+    </section>
+
+    <section class="design-section" id="colors">
+      <div class="container">
+        <h2 class="design-section-title" data-reveal>Colors</h2>
+        <p class="design-section-desc" data-reveal>
+          Warm cream base with deep teal and crimson accents. Designed for readability and energy.
+        </p>
+        <div class="color-grid">
+          {colorPalette.map(color => (
+            <div class="color-card" data-reveal>
+              <div class="color-swatch" style={`background: ${color.hex}`}></div>
+              <div class="color-meta">
+                <h3 class="color-name">{color.name}</h3>
+                <code class="color-var">{color.variable}</code>
+                <p class="color-value">{color.hex}</p>
+                <p class="color-desc">{color.usage}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="callout" data-reveal>
+          <h4>How to customize</h4>
+          <p>Open <code>src/layouts/Layout.astro</code> and update the <code>:root</code> block:</p>
+          <pre><code>:root &#123;
+  --bg: #fff4e4;       /* Change to your background */
+  --accent: #0a3e42;   /* Change to your brand color */
+  --accent2: #dc143c;  /* Change to your secondary brand */
+&#125;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="design-section" id="components">
+      <div class="container">
+        <h2 class="design-section-title" data-reveal>Components</h2>
+        <p class="design-section-desc" data-reveal>
+          Reusable UI building blocks. Copy the markup from <code>src/pages/index.astro</code>.
+        </p>
+        
+        <div class="component-showcase">
+          <div class="showcase-item" data-reveal>
+            <h3 class="showcase-name">Buttons</h3>
+            <div class="showcase-demo">
+              <a href="#" class="btn-primary">
+                Get started
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="btn-ghost">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-reveal>
+            <h3 class="showcase-name">Feature Card</h3>
+            <div class="showcase-demo">
+              <div class="feature-card" style="max-width: 320px;">
+                <div class="feature-icon-wrap" style="background: linear-gradient(135deg,#0a3e42,#dc143c)">
+                  <span class="feature-icon">🤖</span>
+                </div>
+                <h3 class="feature-title">AI Coaching</h3>
+                <p class="feature-desc">Stage-specific guidance — not generic tips. Checks ATS keyword gaps and generates interview prep guides.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-item" data-reveal>
+            <h3 class="showcase-name">Step Card</h3>
+            <div class="showcase-demo">
+              <div class="step-card" style="max-width: 320px;">
+                <div class="step-num-badge">01</div>
+                <h3 class="step-title">Run one command</h3>
+                <p class="step-desc">docker compose up — the full stack starts in under a minute.</p>
+                <pre class="step-code"><code>docker compose up -d</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout" data-reveal>
+          <h4>Adding new components</h4>
+          <p>
+            All component styles live in <code>src/pages/index.astro</code> inside <code>&lt;style&gt;</code> blocks. 
+            For global styles, edit <code>src/layouts/Layout.astro</code>. Keep it simple — no CSS-in-JS, no preprocessors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="design-section" id="gradients">
+      <div class="container">
+        <h2 class="design-section-title" data-reveal>Gradients & Effects</h2>
+        <p class="design-section-desc" data-reveal>
+          Brand gradients and glow effects for visual depth and energy.
+        </p>
+        <div class="gradient-grid">
+          <div class="gradient-card" data-reveal>
+            <div class="gradient-sample" style="background: linear-gradient(135deg, #0a3e42, #dc143c)"></div>
+            <h4 class="gradient-name">Primary Gradient</h4>
+            <code class="gradient-value">linear-gradient(135deg, #0a3e42, #dc143c)</code>
+            <p class="gradient-usage">Used for CTAs, nav buttons, and gradient text</p>
+          </div>
+          <div class="gradient-card" data-reveal>
+            <div class="gradient-sample" style="background: linear-gradient(135deg, #1a7045, #0a3e42)"></div>
+            <h4 class="gradient-name">Success Gradient</h4>
+            <code class="gradient-value">linear-gradient(135deg, #1a7045, #0a3e42)</code>
+            <p class="gradient-usage">Feature cards and positive actions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="design-cta">
+      <div class="container">
+        <div class="cta-inner" data-reveal>
+          <h2 class="cta-title">Start Customizing</h2>
+          <p class="cta-desc">
+            Clone the repo, edit <code>src/layouts/Layout.astro</code>, and deploy to GitHub Pages or Vercel.
+          </p>
+          <a href="https://github.com/Doebele/application-pal-website" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/application-pal-website/" class="footer-brand">
+        <span class="logo-mark">📎</span>
+        <span>application-pal</span>
+      </a>
+      <div class="footer-links">
+        <a href="https://github.com/Doebele/application-pal" target="_blank" rel="noopener">GitHub</a>
+        <a href="/application-pal-website/">Home</a>
+        <a href="/application-pal-website/design">Design</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+</script>
+
+<style>
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+  }
+  [data-reveal]:nth-child(2) { transition-delay: 0.08s; }
+  [data-reveal]:nth-child(3) { transition-delay: 0.16s; }
+  [data-reveal]:nth-child(4) { transition-delay: 0.24s; }
+  [data-reveal]:nth-child(5) { transition-delay: 0.32s; }
+
+  .design-page { background: var(--bg2); }
+
+  .design-hero {
+    padding: 5rem 0 3rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .design-hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .design-hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 700px;
+  }
+  .design-hero-sub code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.18);
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    color: var(--accent);
+  }
+
+  .design-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .design-section:last-of-type { border-bottom: none; }
+  .design-section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+  .design-section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .color-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .color-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(10,62,66,0.12);
+  }
+  .color-swatch {
+    height: 120px;
+    border-bottom: 1px solid var(--border);
+  }
+  .color-meta {
+    padding: 1rem 1.25rem;
+  }
+  .color-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .color-var {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: rgba(10,62,66,0.06);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.35rem;
+  }
+  .color-value {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+  .color-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .component-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .showcase-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+  }
+  .showcase-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+  .showcase-demo {
+    margin-bottom: 1.25rem;
+    padding: 1.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .gradient-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gradient-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(10,62,66,0.12);
+  }
+  .gradient-sample {
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+  }
+  .gradient-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .gradient-value {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(10,62,66,0.06);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    word-break: break-all;
+  }
+  .gradient-usage {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .callout {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+  }
+  .callout h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .callout p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.18);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+  .callout pre {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 0.75rem;
+  }
+  .callout pre code {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--green);
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  .design-cta {
+    padding: 5rem 0;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  .cta-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .cta-desc code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.18);
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    color: var(--accent);
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 244, 228, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    gap: 1rem;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo-mark { font-size: 1.2rem; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.88rem;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-gh {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    padding: 2rem 0;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.88rem;
+  }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #0a3e42, #dc143c);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(10,62,66,0.3);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(10,62,66,0.45);
+    text-decoration: none;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1.5px solid rgba(10,62,66,0.25);
+    color: var(--text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+  .btn-ghost:hover {
+    background: rgba(10,62,66,0.06);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .feature-card {
+    background: var(--bg3);
+    border: 1px solid rgba(10,62,66,0.1);
+    border-radius: 10px;
+    padding: 1.75rem;
+    cursor: default;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(10,62,66,0.3);
+    box-shadow: 0 8px 32px rgba(10,62,66,0.1), 0 0 0 1px rgba(10,62,66,0.08);
+  }
+  .feature-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  .feature-icon {
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+  .feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .feature-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .step-card {
+    background: var(--bg3);
+    border: 1px solid rgba(10,62,66,0.1);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .step-card:hover {
+    border-color: rgba(10,62,66,0.3);
+    transform: translateY(-3px);
+  }
+  .step-num-badge {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #0a3e42, #dc143c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .step-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  .step-code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--green);
+    overflow-x: auto;
+  }
+
+  @media (max-width: 640px) {
+    .nav-links a:not(.nav-gh) { display: none; }
+    .design-hero { padding: 3.5rem 0 2rem; }
+    .design-section { padding: 3rem 0; }
+    .color-grid { grid-template-columns: 1fr; }
+    .gradient-grid { grid-template-columns: 1fr; }
+  }
+</style>
