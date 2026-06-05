@@ -54,7 +54,7 @@
     "location": "London, UK",
     "yearsExperience": 4,
     "targetRole": "Senior Frontend Engineer",
-    "targetCompanies": "Deel", "Remote", "GitLab"],
+    "targetCompanies": ["Deel", "Remote", "GitLab"],
     "skills": ["React", "TypeScript", "CSS", "Accessibility", "Performance"],
     "bio": "Frontend specialist focused on accessibility and performance. Remote-first advocate seeking distributed teams.",
     "avatar": "✨"
