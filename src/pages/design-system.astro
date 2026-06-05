@@ -1,0 +1,727 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Design tokens extracted from Layout.astro
+const colors = [
+  { name: '--bg', value: '#fff4e4', description: 'Haupthintergrund (Background Primary)' },
+  { name: '--bg2', value: '#fef8ee', description: 'Sekundärer Hintergrund (Background Secondary)' },
+  { name: '--bg3', value: '#ffffff', description: 'Card-Hintergrund (Card Background)' },
+  { name: '--border', value: 'rgba(10,62,66,0.14)', description: 'Border Color' },
+  { name: '--text', value: '#212121', description: 'Primärer Text (Text Primary)' },
+  { name: '--text-muted', value: '#6b7f80', description: 'Gedämpfter Text (Text Muted)' },
+  { name: '--accent', value: '#0a3e42', description: 'Akzentfarbe (Accent Primary)' },
+  { name: '--accent-glow', value: 'rgba(10, 62, 66, 0.12)', description: 'Akzent Glow' },
+  { name: '--green', value: '#1a7045', description: 'Erfolgsfarbe / Positiv (Success)' },
+  { name: '--purple', value: '#dc143c', description: 'Sekundärakzent / Crimson (Secondary Accent)' },
+];
+
+const gradients = [
+  { name: 'Primary Gradient', value: 'linear-gradient(135deg, #0a3e42, #dc143c)', description: 'Hauptgradient für CTAs und Highlights' },
+  { name: 'Green Gradient', value: 'linear-gradient(135deg, #1a7045, #0a3e42)', description: 'Feature Icon Gradient' },
+  { name: 'Warm Gradient', value: 'linear-gradient(135deg, #f59e0b, #ef4444)', description: 'Warm Accent Gradient' },
+  { name: 'Deep Gradient', value: 'linear-gradient(135deg, #8b1a2b, #0a3e42)', description: 'Deep/Dark Gradient' },
+];
+
+const typography = [
+  { 
+    name: 'Font Family (Sans)', 
+    cssVar: '--font', 
+    value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif',
+    description: 'Hauptschrift für UI und Text'
+  },
+  { 
+    name: 'Font Family (Mono)', 
+    cssVar: '--font-mono', 
+    value: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace',
+    description: 'Monospace für Code'
+  },
+];
+
+const fontSizes = [
+  { name: 'Body Text', size: '16px', weight: 'normal', usage: 'Regular body text' },
+  { name: 'Hero Title', size: 'clamp(2.4rem, 6.5vw, 4rem)', weight: '800', usage: 'Haupt-Hero-Überschrift' },
+  { name: 'Section Title', size: 'clamp(1.6rem, 4vw, 2.4rem)', weight: '800', usage: 'Abschnittsüberschriften' },
+  { name: 'CTA Title', size: 'clamp(2rem, 5vw, 3rem)', weight: '800', usage: 'CTA-Abschnittstitel' },
+  { name: 'Feature Title', size: '1rem', weight: '700', usage: 'Feature-Card-Titel' },
+  { name: 'Nav Links', size: '0.88rem', weight: 'normal', usage: 'Navigationslinks' },
+  { name: 'Button Text', size: '1rem', weight: '700', usage: 'Button-Beschriftungen' },
+  { name: 'Small Text', size: '0.82rem', weight: 'normal', usage: 'Labels, Footer' },
+  { name: 'Code', size: '0.88rem', weight: 'normal', usage: 'Code-Blöcke' },
+];
+
+const spacing = [
+  { name: 'Border Radius', cssVar: '--radius', value: '10px', description: 'Default Border Radius' },
+  { name: 'Max Width', cssVar: '--max-width', value: '1100px', description: 'Container Max Width' },
+];
+---
+
+<Layout 
+  title="Design System — application-pal"
+  description="Komplette Übersicht aller Farben, Schriftarten und Styles der application-pal Marketing-Website"
+>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/application-pal-website/" class="nav-logo">
+        <span class="logo-mark">📎</span>
+        <span>application-pal</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/application-pal-website/">Home</a>
+        <a href="/application-pal-website/install">Install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="design-system-page">
+    <div class="container">
+      <!-- HEADER -->
+      <header class="page-header">
+        <h1>Design System</h1>
+        <p class="page-intro">
+          Komplette Übersicht aller Farben, Schriftarten, Schriftgrößen und Styles. 
+          Alle Werte können in <code>src/layouts/Layout.astro</code> angepasst werden.
+        </p>
+      </header>
+
+      <!-- COLORS -->
+      <section class="ds-section">
+        <h2 class="section-title">Farben</h2>
+        <p class="section-desc">Alle CSS-Custom-Properties für Farben im :root-Scope.</p>
+        
+        <div class="color-grid">
+          {colors.map(c => (
+            <div class="color-card">
+              <div class="color-preview" style={`background: ${c.value};`}></div>
+              <div class="color-info">
+                <code class="color-var">{c.name}</code>
+                <div class="color-value">{c.value}</div>
+                <div class="color-desc">{c.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- GRADIENTS -->
+      <section class="ds-section">
+        <h2 class="section-title">Gradients</h2>
+        <p class="section-desc">Vordefinierte Gradienten für Buttons, Feature-Icons und Highlights.</p>
+        
+        <div class="gradient-grid">
+          {gradients.map(g => (
+            <div class="gradient-card">
+              <div class="gradient-preview" style={`background: ${g.value};`}></div>
+              <div class="gradient-info">
+                <div class="gradient-name">{g.name}</div>
+                <code class="gradient-value">{g.value}</code>
+                <div class="gradient-desc">{g.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY -->
+      <section class="ds-section">
+        <h2 class="section-title">Typografie</h2>
+        <p class="section-desc">Font-Familien und Font-Stacks.</p>
+        
+        <div class="typography-grid">
+          {typography.map(t => (
+            <div class="type-card">
+              <div class="type-sample" style={`font-family: ${t.value};`}>
+                Aa Bb Cc 123
+              </div>
+              <div class="type-info">
+                <div class="type-name">{t.name}</div>
+                <code class="type-var">{t.cssVar}</code>
+                <div class="type-value">{t.value}</div>
+                <div class="type-desc">{t.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FONT SIZES -->
+      <section class="ds-section">
+        <h2 class="section-title">Schriftgrößen & Gewichte</h2>
+        <p class="section-desc">Alle verwendeten Schriftgrößen mit zugehörigen Font-Weights.</p>
+        
+        <div class="font-size-list">
+          {fontSizes.map(f => (
+            <div class="font-size-card">
+              <div class="font-sample" style={`font-size: ${f.size}; font-weight: ${f.weight};`}>
+                {f.name}
+              </div>
+              <div class="font-details">
+                <div class="font-meta">
+                  <span class="font-label">Size:</span>
+                  <code>{f.size}</code>
+                </div>
+                <div class="font-meta">
+                  <span class="font-label">Weight:</span>
+                  <code>{f.weight}</code>
+                </div>
+                <div class="font-usage">{f.usage}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- SPACING -->
+      <section class="ds-section">
+        <h2 class="section-title">Spacing & Layout</h2>
+        <p class="section-desc">Border-Radius und Container-Breiten.</p>
+        
+        <div class="spacing-grid">
+          {spacing.map(s => (
+            <div class="spacing-card">
+              <code class="spacing-var">{s.cssVar}</code>
+              <div class="spacing-value">{s.value}</div>
+              <div class="spacing-desc">{s.description}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- COMPONENTS PREVIEW -->
+      <section class="ds-section">
+        <h2 class="section-title">Komponenten-Vorschau</h2>
+        <p class="section-desc">Buttons, Cards und weitere UI-Elemente mit den aktuellen Styles.</p>
+        
+        <div class="components-showcase">
+          <!-- Buttons -->
+          <div class="showcase-group">
+            <h3 class="showcase-title">Buttons</h3>
+            <div class="button-row">
+              <a href="#" class="btn-primary">
+                Primary Button
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="btn-ghost">
+                Ghost Button
+              </a>
+            </div>
+          </div>
+
+          <!-- Cards -->
+          <div class="showcase-group">
+            <h3 class="showcase-title">Feature Card</h3>
+            <div class="feature-card">
+              <div class="feature-icon-wrap" style="background: linear-gradient(135deg,#0a3e42,#dc143c)">
+                <span class="feature-icon">🤖</span>
+              </div>
+              <h4 class="feature-title">AI Coaching</h4>
+              <p class="feature-desc">Stage-specific guidance mit ATS keyword gap analysis und interview prep guides.</p>
+            </div>
+          </div>
+
+          <!-- Code Block -->
+          <div class="showcase-group">
+            <h3 class="showcase-title">Code Block</h3>
+            <pre class="code-block"><code>git clone https://github.com/Doebele/application-pal
+cd application-pal
+docker compose up -d</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- USAGE NOTES -->
+      <section class="ds-section">
+        <h2 class="section-title">Anpassung</h2>
+        <div class="usage-note">
+          <p>
+            Alle Farbwerte und Tokens sind in <code>src/layouts/Layout.astro</code> im 
+            <code>&lt;style is:global&gt;</code>-Block unter <code>:root</code> definiert.
+          </p>
+          <p>
+            Um eine Farbe zu ändern:
+          </p>
+          <ol>
+            <li>Öffne <code>src/layouts/Layout.astro</code></li>
+            <li>Suche die entsprechende CSS-Variable (z.B. <code>--accent</code>)</li>
+            <li>Ändere den Hex- oder RGB-Wert</li>
+            <li>Speichere und prüfe die Änderungen im Browser</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/application-pal-website/" class="footer-brand">
+        <span class="logo-mark">📎</span>
+        <span>application-pal</span>
+      </a>
+      <div class="footer-links">
+        <a href="https://github.com/Doebele/application-pal" target="_blank" rel="noopener">GitHub</a>
+        <a href="/application-pal-website/install">Install</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* ── NAV ──────────────────────────────────────────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255, 244, 228, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px; gap: 1rem;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none;
+  }
+  .logo-mark { font-size: 1.2rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.88rem; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── PAGE LAYOUT ──────────────────────────────────────────── */
+  .design-system-page {
+    padding: 3rem 0 5rem;
+    background: var(--bg);
+  }
+
+  .page-header {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .page-intro {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  .page-intro code {
+    font-family: var(--font-mono);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  /* ── SECTIONS ─────────────────────────────────────────────── */
+  .ds-section {
+    margin-bottom: 4rem;
+    padding: 2.5rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* ── COLOR GRID ───────────────────────────────────────────── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .color-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .color-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(10,62,66,0.1);
+  }
+  .color-preview {
+    width: 100%;
+    height: 80px;
+  }
+  .color-info {
+    padding: 1rem;
+  }
+  .color-var {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .color-value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .color-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── GRADIENT GRID ────────────────────────────────────────── */
+  .gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .gradient-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+  .gradient-preview {
+    width: 100%;
+    height: 100px;
+  }
+  .gradient-info {
+    padding: 1rem;
+  }
+  .gradient-name {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .gradient-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+  }
+  .gradient-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── TYPOGRAPHY GRID ──────────────────────────────────────── */
+  .typography-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .type-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--bg2);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .type-sample {
+    font-size: 2.5rem;
+    font-weight: 500;
+    min-width: 180px;
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg3);
+    border-radius: 6px;
+  }
+  .type-info {
+    flex: 1;
+  }
+  .type-name {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .type-var {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .type-value {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .type-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── FONT SIZES ───────────────────────────────────────────── */
+  .font-size-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .font-size-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    background: var(--bg2);
+  }
+  .font-sample {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .font-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .font-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .font-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .font-meta code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: var(--bg3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+  .font-usage {
+    flex: 1 1 100%;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── SPACING GRID ─────────────────────────────────────────── */
+  .spacing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .spacing-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--bg2);
+  }
+  .spacing-var {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .spacing-value {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .spacing-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ── COMPONENTS SHOWCASE ──────────────────────────────────── */
+  .components-showcase {
+    display: grid;
+    gap: 2rem;
+  }
+  .showcase-group {
+    padding: 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .showcase-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #0a3e42, #dc143c);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1.5px solid rgba(10,62,66,0.25);
+    color: var(--text);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-ghost:hover {
+    background: rgba(10,62,66,0.06);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  .feature-card {
+    background: var(--bg3);
+    border: 1px solid rgba(10,62,66,0.1);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    max-width: 360px;
+  }
+  .feature-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  .feature-icon {
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+  .feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .feature-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--green);
+    overflow-x: auto;
+  }
+
+  /* ── USAGE NOTE ───────────────────────────────────────────── */
+  .usage-note {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .usage-note p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  .usage-note code {
+    font-family: var(--font-mono);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .usage-note ol {
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+  }
+  .usage-note li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 2rem 0;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.88rem;
+  }
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover {
+    color: var(--text);
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .design-system-page {
+      padding: 2rem 0 3rem;
+    }
+    .ds-section {
+      padding: 1.5rem;
+    }
+    .type-card {
+      flex-direction: column;
+    }
+    .type-sample {
+      width: 100%;
+    }
+  }
+</style>
