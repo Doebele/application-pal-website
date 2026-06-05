@@ -1,0 +1,176 @@
+[
+  {
+    "user": "sarah.chen@demo.app",
+    "applications": [
+      {
+        "company": "Google",
+        "position": "Staff Software Engineer - Infrastructure",
+        "status": "Interview",
+        "dateApplied": "2026-05-15",
+        "notes": "Referred by former colleague. Focus on system design and distributed systems in prep.",
+        "nextStep": "System design interview scheduled for June 12",
+        "priority": "high"
+      },
+      {
+        "company": "Stripe",
+        "position": "Staff Engineer - Platform",
+        "status": "Applied",
+        "dateApplied": "2026-05-28",
+        "notes": "Completed take-home assessment. Waiting for feedback.",
+        "nextStep": "Follow up with recruiter",
+        "priority": "high"
+      },
+      {
+        "company": "Vercel",
+        "position": "Senior Engineer - Frontend Infrastructure",
+        "status": "Wishlist",
+        "dateApplied": null,
+        "notes": "Dream company. Need to finish portfolio site before applying.",
+        "nextStep": "Complete personal projects showcase",
+        "priority": "medium"
+      }
+    ]
+  },
+  {
+    "user": "marcus.j@demo.app",
+    "applications": [
+      {
+        "company": "Figma",
+        "position": "Senior Product Designer",
+        "status": "Interview",
+        "dateApplied": "2026-05-10",
+        "notes": "Portfolio review went well. Team fit interview next week.",
+        "nextStep": "Prepare case study presentation",
+        "priority": "high"
+      },
+      {
+        "company": "Linear",
+        "position": "Product Designer",
+        "status": "Offer",
+        "dateApplied": "2026-04-22",
+        "notes": "Received offer! 48-hour deadline to respond. Need to negotiate equity.",
+        "nextStep": "Schedule compensation discussion",
+        "priority": "urgent"
+      },
+      {
+        "company": "Notion",
+        "position": "Senior Designer - Templates",
+        "status": "Applied",
+        "dateApplied": "2026-05-30",
+        "notes": "Applied through referral. Waiting to hear back.",
+        "nextStep": "Patience - give them 2 weeks",
+        "priority": "medium"
+      }
+    ]
+  },
+  {
+    "user": "priya.sharma@demo.app",
+    "applications": [
+      {
+        "company": "Shopify",
+        "position": "Senior Data Scientist - Recommendations",
+        "status": "Interview",
+        "dateApplied": "2026-05-18",
+        "notes": "Technical interview completed. ML case study in progress.",
+        "nextStep": "Submit case study by June 8",
+        "priority": "high"
+      },
+      {
+        "company": "Meta",
+        "position": "Data Scientist - Integrity",
+        "status": "Applied",
+        "dateApplied": "2026-06-01",
+        "notes": "Interesting team working on content moderation ML.",
+        "nextStep": "Wait for recruiter screen",
+        "priority": "medium"
+      }
+    ]
+  },
+  {
+    "user": "alex.r@demo.app",
+    "applications": [
+      {
+        "company": "HashiCorp",
+        "position": "Platform Engineer",
+        "status": "Interview",
+        "dateApplied": "2026-05-05",
+        "notes": "Final round next week with engineering director.",
+        "nextStep": "Prepare architecture deep-dive",
+        "priority": "high"
+      },
+      {
+        "company": "Cloudflare",
+        "position": "Systems Engineer - Edge Platform",
+        "status": "Applied",
+        "dateApplied": "2026-05-25",
+        "notes": "Completed coding challenge. Performance was strong.",
+        "nextStep": "Wait for team match",
+        "priority": "high"
+      },
+      {
+        "company": "Databricks",
+        "position": "Senior Platform Engineer",
+        "status": "Wishlist",
+        "dateApplied": null,
+        "notes": "Interesting ML infrastructure challenges. Waiting for right opening.",
+        "nextStep": "Monitor job postings",
+        "priority": "low"
+      }
+    ]
+  },
+  {
+    "user": "emma.w@demo.app",
+    "applications": [
+      {
+        "company": "Deel",
+        "position": "Senior Frontend Engineer",
+        "status": "Interview",
+        "dateApplied": "2026-05-12",
+        "notes": "Love their remote-first culture. Technical round went excellent.",
+        "nextStep": "Values interview scheduled",
+        "priority": "high"
+      },
+      {
+        "company": "GitLab",
+        "position": "Frontend Engineer - Editor",
+        "status": "Applied",
+        "dateApplied": "2026-05-29",
+        "notes": "Public application process is refreshing. Async interviews.",
+        "nextStep": "Complete written interview questions",
+        "priority": "medium"
+      }
+    ]
+  },
+  {
+    "user": "james.park@demo.app",
+    "applications": [
+      {
+        "company": "Amazon",
+        "position": "Principal Engineer - AWS Compute",
+        "status": "Interview",
+        "dateApplied": "2026-04-28",
+        "notes": "Bar raiser interview completed. Awaiting final decision.",
+        "nextStep": "Follow up with hiring manager",
+        "priority": "high"
+      },
+      {
+        "company": "Snowflake",
+        "position": "Principal Engineer - Query Optimization",
+        "status": "Interview",
+        "dateApplied": "2026-05-08",
+        "notes": "Fascinating technical challenges. Team seems world-class.",
+        "nextStep": "Prepare for architecture review",
+        "priority": "high"
+      },
+      {
+        "company": "Microsoft",
+        "position": "Senior Principal Engineer - Azure",
+        "status": "Wishlist",
+        "dateApplied": null,
+        "notes": "Connections at Microsoft. Wait for right opening before applying.",
+        "nextStep": "Network with team leads",
+        "priority": "medium"
+      }
+    ]
+  }
+]

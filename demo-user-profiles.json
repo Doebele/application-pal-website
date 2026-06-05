@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Sarah Chen",
+    "email": "sarah.chen@demo.app",
+    "title": "Senior Software Engineer",
+    "location": "San Francisco, CA",
+    "yearsExperience": 8,
+    "targetRole": "Staff Engineer",
+    "targetCompanies": ["Google", "Stripe", "Vercel"],
+    "skills": ["TypeScript", "React", "Node.js", "PostgreSQL", "AWS"],
+    "bio": "Full-stack engineer passionate about developer tools and performance optimization. Currently seeking staff-level positions at product-focused companies.",
+    "avatar": "👩‍💻"
+  },
+  {
+    "name": "Marcus Johnson",
+    "email": "marcus.j@demo.app",
+    "title": "Product Designer",
+    "location": "New York, NY",
+    "yearsExperience": 5,
+    "targetRole": "Senior Product Designer",
+    "targetCompanies": ["Figma", "Linear", "Notion"],
+    "skills": ["Figma", "User Research", "Design Systems", "Prototyping", "A/B Testing"],
+    "bio": "Product designer focused on B2B SaaS. Love creating intuitive experiences for complex workflows.",
+    "avatar": "🎨"
+  },
+  {
+    "name": "Priya Sharma",
+    "email": "priya.sharma@demo.app",
+    "title": "Data Scientist",
+    "location": "Toronto, ON",
+    "yearsExperience": 6,
+    "targetRole": "Senior Data Scientist",
+    "targetCompanies": ["Shopify", "Meta", "Spotify"],
+    "skills": ["Python", "Machine Learning", "SQL", "TensorFlow", "Data Visualization"],
+    "bio": "ML engineer specializing in recommendation systems and natural language processing. Looking for roles with strong ML infrastructure.",
+    "avatar": "📊"
+  },
+  {
+    "name": "Alex Rodriguez",
+    "email": "alex.r@demo.app",
+    "title": "DevOps Engineer",
+    "location": "Austin, TX",
+    "yearsExperience": 7,
+    "targetRole": "Platform Engineer",
+    "targetCompanies": ["HashiCorp", "Cloudflare", "Databricks"],
+    "skills": ["Kubernetes", "Terraform", "CI/CD", "Monitoring", "Security"],
+    "bio": "Infrastructure engineer with a passion for developer experience and platform reliability. Seeking platform team opportunities.",
+    "avatar": "⚙️"
+  },
+  {
+    "name": "Emma Williams",
+    "email": "emma.w@demo.app",
+    "title": "Frontend Developer",
+    "location": "London, UK",
+    "yearsExperience": 4,
+    "targetRole": "Senior Frontend Engineer",
+    "targetCompanies": "Deel", "Remote", "GitLab"],
+    "skills": ["React", "TypeScript", "CSS", "Accessibility", "Performance"],
+    "bio": "Frontend specialist focused on accessibility and performance. Remote-first advocate seeking distributed teams.",
+    "avatar": "✨"
+  },
+  {
+    "name": "James Park",
+    "email": "james.park@demo.app",
+    "title": "Backend Engineer",
+    "location": "Seattle, WA",
+    "yearsExperience": 9,
+    "targetRole": "Principal Engineer",
+    "targetCompanies": ["Amazon", "Microsoft", "Snowflake"],
+    "skills": ["Go", "Distributed Systems", "Microservices", "gRPC", "Redis"],
+    "bio": "Distributed systems engineer with experience scaling services to millions of users. Looking for principal-level challenges.",
+    "avatar": "🔧"
+  }
+]
