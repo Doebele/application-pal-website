@@ -42,18 +42,38 @@ This directory contains demo user profiles and application data that can be used
    - Create applications matching the data in `demo-applications-data.json`
    - Use the status, notes, and dates provided
 
-### Automated Method (requires application-pal API access)
+### Automated Method (**RECOMMENDED**)
 
-> **Note**: This requires programmatic access to application-pal's API.
-> The application team would need to implement a seeding script that:
-> 1. Creates users via the registration API
-> 2. Populates applications for each user
-> 3. Sets appropriate dates and statuses
+Use the provided `seed-demo-accounts.mjs` script to automatically create all demo accounts:
 
-**Expected API endpoints needed:**
-- `POST /api/auth/register` - Create user accounts
+1. Make sure application-pal is running:
+   ```bash
+   cd /path/to/application-pal
+   docker compose up -d
+   ```
+
+2. Run the seeding script:
+   ```bash
+   # From the marketing website directory
+   node seed-demo-accounts.mjs
+   
+   # Or specify a custom API URL
+   node seed-demo-accounts.mjs --api-url http://localhost:3000
+   ```
+
+The script will:
+- Create all 6 user accounts with email + password
+- Update each user's profile with role, location, and bio
+- Create job applications in various stages for each user
+- Handle the invite token system automatically
+
+**Default password for all accounts**: `Demo123!`
+
+**Note**: The script uses the application's REST API endpoints:
+- `POST /api/auth/setup` - Create user accounts
+- `POST /api/invites` - Generate invite tokens
+- `PATCH /api/profile` - Update user profiles
 - `POST /api/applications` - Create job applications
-- `PATCH /api/applications/:id` - Update application status
 
 ## Use Cases
 
