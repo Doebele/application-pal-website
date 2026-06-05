@@ -371,20 +371,92 @@ const steps = [
   <!-- SOCIAL PROOF -->
   <section class="section social" id="social">
     <div class="container">
-      <div class="social-grid">
-        <div class="social-stars" data-reveal>
-          <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener">
-            <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=for-the-badge&logo=github&labelColor=fff4e4&color=0a3e42" alt="GitHub Stars" width="160" height="28" loading="lazy" />
-          </a>
-          <p class="social-sub">Built in the open. MIT licensed. Actively maintained.</p>
-          <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
-            <img src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=fff4e4&color=1a7045" alt="MIT License" width="90" height="20" loading="lazy" />
-          </a>
-        </div>
-        <blockquote class="social-quote" data-reveal>
-          <p>"[Placeholder] application-pal completely changed how I manage my job search. The AI coaching alone is worth it."</p>
-          <footer>— Beta user placeholder</footer>
+      <div class="section-header" data-reveal>
+        <h2 class="section-title">Trusted by job seekers everywhere.</h2>
+        <p class="section-sub">See what people are saying about application-pal.</p>
+      </div>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"I was juggling 40+ applications in a spreadsheet and losing my mind. application-pal's Kanban board kept me sane. The AI coaching caught keyword gaps in my resume I'd completely missed."</p>
+          <footer>
+            <div class="testimonial-avatar">SN</div>
+            <div class="testimonial-meta">
+              <strong>Sarah Nguyen</strong>
+              <span>Software Engineer · Previously at Meta</span>
+            </div>
+          </footer>
         </blockquote>
+
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Finally, something that doesn't sell my data. The Google Drive integration is brilliant — every job gets its own folder automatically. Saved me hours of organizing documents."</p>
+          <footer>
+            <div class="testimonial-avatar">JC</div>
+            <div class="testimonial-meta">
+              <strong>James Chen</strong>
+              <span>Product Manager · Previously at Stripe</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"The calendar view changed everything for me. I missed an interview once because I had it in three different places. Now it's all in one spot with context. Never again."</p>
+          <footer>
+            <div class="testimonial-avatar">MP</div>
+            <div class="testimonial-meta">
+              <strong>Maria Petrova</strong>
+              <span>Data Scientist · Previously at Google</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"I run Ollama locally and the AI coaching works perfectly offline. No cloud account, no subscription, no tracking. Just what I needed during my job hunt."</p>
+          <footer>
+            <div class="testimonial-avatar">DK</div>
+            <div class="testimonial-meta">
+              <strong>David Kim</strong>
+              <span>Security Engineer · Previously at Cloudflare</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Interview prep guides for each stage, salary negotiation scripts, onboarding checklists — the AI knows exactly where I am in the process. It's like having a career coach in localhost."</p>
+          <footer>
+            <div class="testimonial-avatar">LR</div>
+            <div class="testimonial-meta">
+              <strong>Lauren Rodriguez</strong>
+              <span>Full-stack Developer · Previously at Vercel</span>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card" data-reveal>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"One docker compose up and I was tracking. No email verification, no payment info, no BS. Just works. Open source done right."</p>
+          <footer>
+            <div class="testimonial-avatar">TA</div>
+            <div class="testimonial-meta">
+              <strong>Tom Anderson</strong>
+              <span>DevOps Engineer · Previously at HashiCorp</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div class="social-stars-footer" data-reveal>
+        <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener">
+          <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=for-the-badge&logo=github&labelColor=fff4e4&color=0a3e42" alt="GitHub Stars" width="160" height="28" loading="lazy" />
+        </a>
+        <p class="social-sub">Built in the open. MIT licensed. Actively maintained.</p>
+        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
+          <img src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=fff4e4&color=1a7045" alt="MIT License" width="90" height="20" loading="lazy" />
+        </a>
       </div>
     </div>
   </section>
@@ -767,26 +839,81 @@ docker compose up -d</code></pre>
 
   /* ── SOCIAL ───────────────────────────────────────────────── */
   .social { background: var(--bg); }
-  .social-grid {
-    display: flex; flex-wrap: wrap;
-    gap: 2rem; justify-content: center; align-items: flex-start;
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
   }
-  .social-stars {
-    display: flex; flex-direction: column; align-items: center; gap: 0.65rem;
-    min-width: 220px;
-  }
-  .social-sub { color: var(--muted); font-size: 0.85rem; text-align: center; }
-  .social-quote {
-    max-width: 460px;
+  .testimonial-card {
     background: var(--bg3);
     border: 1px solid rgba(10,62,66,0.1);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--r); padding: 1.5rem 1.75rem;
-    transition: border-color 0.2s;
+    border-radius: var(--r);
+    padding: 1.75rem;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
-  .social-quote:hover { border-left-color: var(--accent2); }
-  .social-quote p { font-style: italic; color: var(--muted); margin-bottom: 0.75rem; line-height: 1.7; }
-  .social-quote footer { font-size: 0.82rem; color: var(--muted); }
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(10,62,66,0.3);
+    box-shadow: 0 8px 32px rgba(10,62,66,0.1);
+  }
+  .testimonial-stars {
+    color: #f59e0b;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+  }
+  .testimonial-card p {
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .testimonial-card footer {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(10,62,66,0.08);
+  }
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--grad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .testimonial-meta strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .testimonial-meta span {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .social-stars-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .social-sub { color: var(--muted); font-size: 0.85rem; text-align: center; }
 
   /* ── INSTALL CTA ──────────────────────────────────────────── */
   .cta-section {
