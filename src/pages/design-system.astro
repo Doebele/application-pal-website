@@ -1,0 +1,750 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Design System — application-pal-website"
+  description="All design tokens, colors, typography, and stylesheets used on the application-pal marketing site."
+>
+  <main class="ds-page">
+    <div class="container">
+
+      <!-- Header -->
+      <header class="ds-header">
+        <a href="/application-pal-website/" class="ds-back">← Back to site</a>
+        <h1 class="ds-title">Design System</h1>
+        <p class="ds-sub">All design tokens — colors, typography, spacing, and stylesheets for <code>application-pal-website</code></p>
+      </header>
+
+      <!-- ── COLORS ──────────────────────────────────────────────────── -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Colors</h2>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Backgrounds</h3>
+          <div class="swatch-row">
+            <div class="swatch-item">
+              <div class="swatch" style="background:#fff4e4; border:1px solid rgba(10,62,66,.2)"></div>
+              <code class="swatch-var">--bg</code>
+              <span class="swatch-val">#fff4e4</span>
+              <span class="swatch-desc">Page background (warm cream)</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#fef8ee; border:1px solid rgba(10,62,66,.2)"></div>
+              <code class="swatch-var">--bg2</code>
+              <span class="swatch-val">#fef8ee</span>
+              <span class="swatch-desc">Section alternate background</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#ffffff; border:1px solid rgba(10,62,66,.14)"></div>
+              <code class="swatch-var">--bg3</code>
+              <span class="swatch-val">#ffffff</span>
+              <span class="swatch-desc">Cards, panels, nav</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Text</h3>
+          <div class="swatch-row">
+            <div class="swatch-item">
+              <div class="swatch" style="background:#212121"></div>
+              <code class="swatch-var">--text</code>
+              <span class="swatch-val">#212121</span>
+              <span class="swatch-desc">Primary text</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#6b7f80"></div>
+              <code class="swatch-var">--text-muted</code>
+              <span class="swatch-val">#6b7f80</span>
+              <span class="swatch-desc">Secondary / muted text</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Brand Accents</h3>
+          <div class="swatch-row">
+            <div class="swatch-item">
+              <div class="swatch" style="background:#0a3e42"></div>
+              <code class="swatch-var">--accent</code>
+              <span class="swatch-val">#0a3e42</span>
+              <span class="swatch-desc">Primary accent (dark teal)</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:rgba(10,62,66,0.12); border:1px solid rgba(10,62,66,.2)"></div>
+              <code class="swatch-var">--accent-glow</code>
+              <span class="swatch-val">rgba(10,62,66,.12)</span>
+              <span class="swatch-desc">Accent tint / glow</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#dc143c"></div>
+              <code class="swatch-var">--purple</code>
+              <span class="swatch-val">#dc143c</span>
+              <span class="swatch-desc">Secondary accent (crimson)</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#1a7045"></div>
+              <code class="swatch-var">--green</code>
+              <span class="swatch-val">#1a7045</span>
+              <span class="swatch-desc">Success / open-source badge</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Gradient</h3>
+          <div class="swatch-row">
+            <div class="swatch-item" style="min-width:260px">
+              <div class="swatch swatch-wide" style="background:linear-gradient(135deg,#0a3e42,#dc143c)"></div>
+              <code class="swatch-var">--grad</code>
+              <span class="swatch-val">linear-gradient(135deg, #0a3e42, #dc143c)</span>
+              <span class="swatch-desc">CTA buttons, headings, stat numbers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Border</h3>
+          <div class="swatch-row">
+            <div class="swatch-item">
+              <div class="swatch" style="background:rgba(10,62,66,0.14); border:2px solid #ccc"></div>
+              <code class="swatch-var">--border</code>
+              <span class="swatch-val">rgba(10,62,66,.14)</span>
+              <span class="swatch-desc">Default border</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TYPOGRAPHY ──────────────────────────────────────────────── -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Typography</h2>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Font Families</h3>
+          <div class="font-family-list">
+            <div class="font-family-card">
+              <div class="font-role">UI / Body</div>
+              <code class="font-var">--font</code>
+              <div class="font-specimen" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+                The quick brown fox jumps over the lazy dog.
+              </div>
+              <div class="font-stack">-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif</div>
+            </div>
+            <div class="font-family-card">
+              <div class="font-role">Monospace / Code</div>
+              <code class="font-var">--font-mono</code>
+              <div class="font-specimen" style="font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size:1.1rem">
+                docker compose up -d &amp;&amp; open http://localhost:8070
+              </div>
+              <div class="font-stack">"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Font Sizes</h3>
+          <div class="ds-table-wrap">
+            <table class="ds-table">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Weight</th>
+                  <th>Usage</th>
+                  <th>Preview</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>clamp(2.4rem, 6.5vw, 4rem)</code></td>
+                  <td>800</td>
+                  <td>Hero title</td>
+                  <td><span style="font-size:2rem;font-weight:800;line-height:1.1">application-pal</span></td>
+                </tr>
+                <tr>
+                  <td><code>clamp(2rem, 5vw, 3rem)</code></td>
+                  <td>800</td>
+                  <td>CTA title</td>
+                  <td><span style="font-size:1.8rem;font-weight:800;line-height:1.1">Get started</span></td>
+                </tr>
+                <tr>
+                  <td><code>clamp(1.6rem, 4vw, 2.4rem)</code></td>
+                  <td>800</td>
+                  <td>Section titles</td>
+                  <td><span style="font-size:1.6rem;font-weight:800">Features</span></td>
+                </tr>
+                <tr>
+                  <td><code>2rem</code></td>
+                  <td>800</td>
+                  <td>Stat numbers</td>
+                  <td><span style="font-size:2rem;font-weight:800">100%</span></td>
+                </tr>
+                <tr>
+                  <td><code>1.1rem</code></td>
+                  <td>400</td>
+                  <td>Hero subtitle, section sub</td>
+                  <td><span style="font-size:1.1rem">Track every job application, locally.</span></td>
+                </tr>
+                <tr>
+                  <td><code>1.05rem</code></td>
+                  <td>700</td>
+                  <td>Step titles</td>
+                  <td><span style="font-size:1.05rem;font-weight:700">Run one command</span></td>
+                </tr>
+                <tr>
+                  <td><code>1rem</code></td>
+                  <td>700</td>
+                  <td>Feature card titles, btn-primary</td>
+                  <td><span style="font-size:1rem;font-weight:700">AI Coaching</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.95rem</code></td>
+                  <td>700</td>
+                  <td>Footer brand</td>
+                  <td><span style="font-size:0.95rem;font-weight:700">📎 application-pal</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.9rem</code></td>
+                  <td>400</td>
+                  <td>Feature / step descriptions</td>
+                  <td><span style="font-size:0.9rem;color:#6b7f80">Stage-specific guidance, not generic tips.</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.88rem</code></td>
+                  <td>600</td>
+                  <td>Nav links, tab labels</td>
+                  <td><span style="font-size:0.88rem;font-weight:600">Features</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.85rem</code></td>
+                  <td>400</td>
+                  <td>Social sub, footer links</td>
+                  <td><span style="font-size:0.85rem;color:#6b7f80">Open source · MIT license</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.82rem</code></td>
+                  <td>400</td>
+                  <td>Stat labels, social quote footer</td>
+                  <td><span style="font-size:0.82rem;color:#6b7f80">self-hosted &amp; private</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.8rem</code></td>
+                  <td>400</td>
+                  <td>Hero badge, terminal body</td>
+                  <td><span style="font-size:0.8rem;color:#6b7f80">● Open Source · MIT</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.78rem</code></td>
+                  <td>400</td>
+                  <td>Address bar in browser frame</td>
+                  <td><span style="font-size:0.78rem;font-family:monospace;color:#6b7f80">localhost:8070</span></td>
+                </tr>
+                <tr>
+                  <td><code>0.75rem</code></td>
+                  <td>400</td>
+                  <td>Terminal title label</td>
+                  <td><span style="font-size:0.75rem;font-family:monospace;color:#6b7f80">application-pal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Font Weights</h3>
+          <div class="ds-table-wrap">
+            <table class="ds-table">
+              <thead>
+                <tr><th>Weight</th><th>Name</th><th>Usage</th><th>Preview</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>400</code></td><td>Regular</td>
+                  <td>Body copy, descriptions, muted text</td>
+                  <td><span style="font-weight:400;font-size:1.1rem">Local-first job application tracker.</span></td>
+                </tr>
+                <tr>
+                  <td><code>600</code></td><td>Semibold</td>
+                  <td>Nav links, ghost buttons, tab labels, step code</td>
+                  <td><span style="font-weight:600;font-size:1.1rem">View on GitHub</span></td>
+                </tr>
+                <tr>
+                  <td><code>700</code></td><td>Bold</td>
+                  <td>Feature titles, step titles, primary buttons, logo</td>
+                  <td><span style="font-weight:700;font-size:1.1rem">AI Coaching</span></td>
+                </tr>
+                <tr>
+                  <td><code>800</code></td><td>Extrabold</td>
+                  <td>Hero h1, section titles, CTA title, stat numbers</td>
+                  <td><span style="font-weight:800;font-size:1.1rem">Track smarter. Apply faster.</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SPACING & LAYOUT ─────────────────────────────────────────── -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Spacing &amp; Layout</h2>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <thead>
+              <tr><th>Token / Class</th><th>Value</th><th>Usage</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--radius</code></td><td>10px</td><td>Cards, buttons, browser frames, code blocks</td></tr>
+              <tr><td><code>--max-width</code></td><td>1100px</td><td>Max content width (used by .container)</td></tr>
+              <tr><td><code>.container</code></td><td>max-width: 1100px; padding: 0 1.25rem (→ 2rem @640px)</td><td>Page-level content wrapper</td></tr>
+              <tr><td>Section padding</td><td>5.5rem 0</td><td>.section — feature sections, how-it-works, social</td></tr>
+              <tr><td>Hero padding</td><td>6rem 0 4rem</td><td>Top hero area</td></tr>
+              <tr><td>CTA section padding</td><td>6rem 0</td><td>Bottom CTA before footer</td></tr>
+              <tr><td>Nav height</td><td>62px</td><td>Sticky top navigation bar</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── COMPONENT SAMPLES ────────────────────────────────────────── -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Component Samples</h2>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Buttons</h3>
+          <div class="component-row">
+            <div class="component-item">
+              <a href="#" class="btn-primary-sample">Get started free</a>
+              <code class="component-label">.btn-primary — grad bg, white text</code>
+            </div>
+            <div class="component-item">
+              <a href="#" class="btn-ghost-sample">View on GitHub</a>
+              <code class="component-label">.btn-ghost — transparent, border, text color</code>
+            </div>
+            <div class="component-item">
+              <a href="#" class="btn-nav-cta-sample">Try it free</a>
+              <code class="component-label">.btn-nav-cta — nav CTA button</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Badge</h3>
+          <div class="component-row">
+            <div class="component-item">
+              <div class="badge-sample">
+                <span class="badge-dot-sample"></span>
+                Open Source · MIT License
+              </div>
+              <code class="component-label">.hero-badge — rounded pill with pulsing dot</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-group">
+          <h3 class="ds-group-title">Cards</h3>
+          <div class="component-row">
+            <div class="feature-card-sample">
+              <div class="feature-icon-sample" style="background:linear-gradient(135deg,#0a3e42,#dc143c)">🤖</div>
+              <div class="feature-title-sample">AI Coaching</div>
+              <div class="feature-desc-sample">Stage-specific guidance — not generic tips. Checks ATS keyword gaps and generates interview prep guides.</div>
+            </div>
+            <div class="step-card-sample">
+              <div class="step-num-sample">01</div>
+              <div class="feature-title-sample">Run one command</div>
+              <div class="feature-desc-sample">docker compose up — the full stack starts in under a minute.</div>
+              <code class="step-code-sample">docker compose up -d</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STYLESHEET REFERENCE ─────────────────────────────────────── -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Stylesheet Reference</h2>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <thead>
+              <tr><th>File</th><th>Role</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>src/layouts/Layout.astro</code></td>
+                <td>Global CSS reset, all CSS variables (colors, fonts, radius, max-width), base body and anchor styles, .container utility. This is the single source of truth for all design tokens.</td>
+              </tr>
+              <tr>
+                <td><code>src/pages/index.astro</code></td>
+                <td>All landing page component styles (nav, hero, stats bar, feature cards, screenshot tabs, how-it-works, social proof, CTA section, footer, animations). Scoped via Astro's data-astro-cid attributes.</td>
+              </tr>
+              <tr>
+                <td><code>src/pages/install.astro</code></td>
+                <td>Install page styles — code blocks, platform tabs, step list. Also scoped.</td>
+              </tr>
+              <tr>
+                <td><code>astro.config.mjs</code></td>
+                <td>Site URL (https://doebele.github.io/application-pal-website), base path (/application-pal-website), static output mode.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+</Layout>
+
+<style>
+  .ds-page {
+    padding: 3rem 0 6rem;
+    background: var(--bg);
+    min-height: 100vh;
+  }
+
+  .ds-header {
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .ds-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .ds-back:hover { color: var(--accent); text-decoration: none; }
+
+  .ds-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: var(--grad, linear-gradient(135deg, #0a3e42, #dc143c));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+  }
+  .ds-sub {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .ds-sub code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: rgba(10,62,66,0.1);
+    border: 1px solid rgba(10,62,66,0.18);
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    color: var(--accent);
+  }
+
+  /* Sections */
+  .ds-section {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .ds-section-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(10,62,66,0.14);
+    margin: 0;
+  }
+
+  /* Groups */
+  .ds-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ds-group-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+
+  /* Swatches */
+  .swatch-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+  }
+  .swatch {
+    width: 100%;
+    min-width: 100px;
+    height: 60px;
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+  .swatch-wide {
+    min-width: 240px;
+    width: 240px;
+  }
+  .swatch-var {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.15);
+    padding: 0.15rem 0.4rem;
+    border-radius: 5px;
+    width: fit-content;
+  }
+  .swatch-val {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .swatch-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Font families */
+  .font-family-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .font-family-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .font-role {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .font-var {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.15);
+    padding: 0.15rem 0.5rem;
+    border-radius: 5px;
+    width: fit-content;
+  }
+  .font-specimen {
+    font-size: 1.25rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0.25rem 0;
+  }
+  .font-stack {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Tables */
+  .ds-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .ds-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: var(--bg3);
+  }
+  .ds-table th {
+    text-align: left;
+    padding: 0.65rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+  }
+  .ds-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid rgba(10,62,66,0.07);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  .ds-table tr:last-child td { border-bottom: none; }
+  .ds-table code {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.14);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  /* Component samples */
+  .component-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .component-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .component-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+  }
+
+  .btn-primary-sample {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg,#0a3e42,#dc143c);
+    color: #fff !important;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(10,62,66,0.3);
+  }
+  .btn-ghost-sample {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1.5px solid rgba(10,62,66,0.25);
+    color: var(--text) !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .btn-nav-cta-sample {
+    display: inline-flex;
+    background: linear-gradient(135deg,#0a3e42,#dc143c);
+    color: #fff !important;
+    padding: 0.42rem 1.1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .badge-sample {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(10,62,66,0.08);
+    border: 1px solid rgba(10,62,66,0.18);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .badge-dot-sample {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1a7045;
+    box-shadow: 0 0 6px #1a7045;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,to{opacity:1} 50%{opacity:.4} }
+
+  .feature-card-sample {
+    background: var(--bg3);
+    border: 1px solid rgba(10,62,66,0.1);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .feature-icon-sample {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .feature-title-sample {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .feature-desc-sample {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .step-card-sample {
+    background: var(--bg3);
+    border: 1px solid rgba(10,62,66,0.1);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .step-num-sample {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg,#0a3e42,#dc143c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+  }
+  .step-code-sample {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: #1a7045;
+    margin-top: 0.4rem;
+    display: block;
+  }
+</style>
