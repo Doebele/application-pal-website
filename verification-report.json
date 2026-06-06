@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-06-06T06:19:22.384Z",
+  "url": "https://doebele.github.io/application-pal-website/",
+  "viewport": {
+    "desktop": {
+      "width": 1920,
+      "height": 1080
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "performance": {
+    "domContentLoaded": 32,
+    "loadComplete": 32,
+    "firstPaint": 32,
+    "domInteractive": 27
+  },
+  "resources": {
+    "js": 0,
+    "css": 1,
+    "image": 0,
+    "font": 0,
+    "total": 2
+  },
+  "bestPractices": {
+    "hasViewportMeta": true,
+    "hasTitle": true,
+    "hasMetaDescription": true,
+    "hasOgTags": true,
+    "hasCanonical": true,
+    "hasLangAttr": true,
+    "usesHTTPS": true
+  },
+  "estimatedScore": 100,
+  "screenshots": {
+    "desktop": "verification-screenshots/desktop-homepage.png",
+    "mobile": "verification-screenshots/mobile-homepage.png"
+  }
+}
