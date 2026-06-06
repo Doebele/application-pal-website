@@ -194,12 +194,16 @@ const steps = [
         <input type="radio" name="tab" id="tab-calendar" />
         <input type="radio" name="tab" id="tab-ai" />
         <input type="radio" name="tab" id="tab-drive" />
+        <input type="radio" name="tab" id="tab-multiuser" />
+        <input type="radio" name="tab" id="tab-flexai" />
 
         <div class="tab-labels">
           <label for="tab-kanban">📋 Kanban Board</label>
           <label for="tab-calendar">📅 Calendar</label>
           <label for="tab-ai">🤖 AI Coaching</label>
           <label for="tab-drive">📁 Google Drive</label>
+          <label for="tab-multiuser">👥 Multi-user</label>
+          <label for="tab-flexai">🏠 Flexible AI</label>
         </div>
 
         <div class="browser-frame">
@@ -340,6 +344,71 @@ const steps = [
                 })}
               </svg>
               <span class="ph-label">📁 Google Drive — add screenshots/google-drive.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-multiuser">
+            <img src="/application-pal-website/screenshots/multi-user.png" alt="Multi-user" class="screenshot-img" width="1200" height="700" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-multiuser').style.display='flex'" />
+            <div id="ph-multiuser" class="screenshot-ph">
+              <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="900" height="500" fill="#fef8ee"/>
+                <rect x="0" y="0" width="900" height="44" fill="#fef8ee"/>
+                <text x="24" y="27" fill="#212121" font-size="14" font-family="monospace" font-weight="bold">👥 Multi-user</text>
+                <!-- Admin panel mockup -->
+                <rect x="24" y="60" width="852" height="420" rx="8" fill="#ffffff" stroke="rgba(10,62,66,0.14)" stroke-width="1"/>
+                <rect x="36" y="76" width="240" height="24" rx="4" fill="#0a3e42" opacity=".1"/>
+                <text x="46" y="93" fill="#0a3e42" font-size="12" font-family="monospace" font-weight="bold">User Management</text>
+                <!-- User list -->
+                {['alice@example.com','bob@company.org','charlie@mail.com','dana@startup.io'].map((user, i) => {
+                  const y = 120 + i * 70;
+                  return `<g>
+                    <rect x="36" y="${y}" width="824" height="56" rx="6" fill="#fef8ee" stroke="rgba(10,62,66,0.14)" stroke-width="1"/>
+                    <circle cx="62" cy="${y+28}" r="18" fill="#dc143c" opacity=".2"/>
+                    <text x="62" y="${y+33}" fill="#dc143c" font-size="12" text-anchor="middle" font-family="monospace" font-weight="bold">${user[0].toUpperCase()}</text>
+                    <rect x="92" y="${y+16}" width="160" height="10" rx="2" fill="#212121" opacity=".7"/>
+                    <rect x="92" y="${y+30}" width="120" height="8" rx="2" fill="#6b7f80"/>
+                    <rect x="760" y="${y+18}" width="80" height="20" rx="10" fill="#1a7045" opacity=".15" stroke="#1a7045" stroke-width="1"/>
+                    <text x="800" y="${y+31}" fill="#1a7045" font-size="9" text-anchor="middle" font-family="monospace">Active</text>
+                  </g>`;
+                })}
+                <rect x="36" y="430" width="824" height="36" rx="6" fill="#0a3e42" opacity=".1"/>
+                <text x="156" y="452" fill="#0a3e42" font-size="11" text-anchor="middle" font-family="monospace">+ Invite new user</text>
+              </svg>
+              <span class="ph-label">👥 Multi-user — add screenshots/multi-user.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-flexai">
+            <img src="/application-pal-website/screenshots/flexible-ai.png" alt="Flexible AI" class="screenshot-img" width="1200" height="700" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-flexai').style.display='flex'" />
+            <div id="ph-flexai" class="screenshot-ph">
+              <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="900" height="500" fill="#fef8ee"/>
+                <rect x="0" y="0" width="900" height="44" fill="#fef8ee"/>
+                <text x="24" y="27" fill="#212121" font-size="14" font-family="monospace" font-weight="bold">🏠 AI Provider Settings</text>
+                <!-- Provider cards in 2 columns -->
+                {[
+                  {name:'Ollama',icon:'🦙',desc:'Local · Free',color:'#0a3e42'},
+                  {name:'LM Studio',icon:'💻',desc:'Local · Free',color:'#1a7045'},
+                  {name:'Anthropic',icon:'🤖',desc:'API Key required',color:'#dc143c'},
+                  {name:'OpenAI',icon:'⚡',desc:'API Key required',color:'#f59e0b'},
+                  {name:'Google Gemini',icon:'✨',desc:'API Key required',color:'#4285f4'},
+                  {name:'OpenRouter',icon:'🔀',desc:'API Key required',color:'#8b1a2b'}
+                ].map((p, i) => {
+                  const col = i % 2;
+                  const row = Math.floor(i / 2);
+                  const x = 24 + col * 438;
+                  const y = 60 + row * 130;
+                  return `<g>
+                    <rect x="${x}" y="${y}" width="424" height="114" rx="8" fill="#ffffff" stroke="rgba(10,62,66,0.14)" stroke-width="1"/>
+                    <text x="${x+16}" y="${y+42}" font-size="32">${p.icon}</text>
+                    <text x="${x+60}" y="${y+32}" fill="#212121" font-size="14" font-family="monospace" font-weight="bold">${p.name}</text>
+                    <text x="${x+60}" y="${y+50}" fill="#6b7f80" font-size="10" font-family="monospace">${p.desc}</text>
+                    <rect x="${x+16}" y="${y+72}" width="392" height="28" rx="6" fill="#fef8ee" stroke="rgba(10,62,66,0.14)" stroke-width="1"/>
+                    <text x="${x+28}" y="${y+90}" fill="${p.color}" font-size="10" font-family="monospace">Configure</text>
+                  </g>`;
+                })}
+              </svg>
+              <span class="ph-label">🏠 Flexible AI — add screenshots/flexible-ai.png to show real UI</span>
             </div>
           </div>
         </div>
@@ -693,7 +762,9 @@ docker compose up -d</code></pre>
   #tab-kanban:checked ~ .tab-labels label[for="tab-kanban"],
   #tab-calendar:checked ~ .tab-labels label[for="tab-calendar"],
   #tab-ai:checked ~ .tab-labels label[for="tab-ai"],
-  #tab-drive:checked ~ .tab-labels label[for="tab-drive"] {
+  #tab-drive:checked ~ .tab-labels label[for="tab-drive"],
+  #tab-multiuser:checked ~ .tab-labels label[for="tab-multiuser"],
+  #tab-flexai:checked ~ .tab-labels label[for="tab-flexai"] {
     background: var(--grad); border-color: transparent; color: #fff;
     box-shadow: 0 4px 16px rgba(10,62,66,0.25);
   }
@@ -719,7 +790,9 @@ docker compose up -d</code></pre>
   #tab-kanban:checked ~ .browser-frame #panel-kanban,
   #tab-calendar:checked ~ .browser-frame #panel-calendar,
   #tab-ai:checked ~ .browser-frame #panel-ai,
-  #tab-drive:checked ~ .browser-frame #panel-drive { display: block; }
+  #tab-drive:checked ~ .browser-frame #panel-drive,
+  #tab-multiuser:checked ~ .browser-frame #panel-multiuser,
+  #tab-flexai:checked ~ .browser-frame #panel-flexai { display: block; }
   .screenshot-img { width: 100%; height: auto; display: block; }
   .screenshot-ph {
     width: 100%; display: none;
