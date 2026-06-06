@@ -89,12 +89,15 @@ Created: 2026-06-05T10:53:42Z
 - Footer with GitHub link and license badge
 - Complete install guide (/install) with prerequisites, steps, troubleshooting
 
-### ⚠️ Placeholder Content (Non-Blocking)
+### ✅ Real Content
 
 1. **Screenshots** (public/screenshots/):
-   - Currently: SVG placeholders with onerror fallback
-   - Needed: Real app screenshots (kanban.png, calendar.png, ai-coaching.png, google-drive.png)
-   - Impact: Visual preview, does not block launch
+   - All 6 screenshots added from application-pal docs/screenshots/
+   - kanban.png (514KB), calendar.png (476KB), ai-coaching.png (206KB)
+   - flexible-ai.png (210KB), multi-user.png (1.1MB), google-drive.png (636KB)
+   - Live at: https://doebele.github.io/application-pal-website/screenshots/*.png
+
+### ⚠️ Remaining Placeholders (Non-Blocking)
 
 2. **OG Image** (public/og-image.png):
    - Currently: 50-byte text file placeholder
@@ -143,7 +146,7 @@ $ npm run build
 ## Next Actions
 
 ### Immediate (Optional)
-- Add real app screenshots to `public/screenshots/`
+- ✅ ~~Add real app screenshots to `public/screenshots/`~~ (DONE 2026-06-06)
 - Replace `public/og-image.png` with 1200×630 branded image
 - Replace placeholder testimonial with real quote
 
