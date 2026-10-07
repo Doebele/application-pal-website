@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+---
+<button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / Dark umschalten">
+  <Icon name="sun-light" size={17} class="icon-sun" />
+  <Icon name="half-moon" size={17} class="icon-moon" />
+</button>
+
+<script>
+  document.querySelectorAll('.theme-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const html = document.documentElement;
+      const next = html.dataset.theme === 'light' ? 'dark' : 'light';
+      html.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch { /* private mode */ }
+    });
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 100px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer; padding: 0;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--text-muted); }
+  /* dark mode (default): offer the sun; light mode: offer the moon */
+  .icon-sun { display: block; }
+  .icon-moon { display: none; }
+  :global(html[data-theme='light']) .icon-sun { display: none; }
+  :global(html[data-theme='light']) .icon-moon { display: block; }
+</style>

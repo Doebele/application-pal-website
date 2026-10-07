@@ -1,66 +1,80 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 const GITHUB_URL = 'https://github.com/Doebele/application-pal';
 const INSTALL_URL = '/application-pal-website/install';
 
 const features = [
   {
-    icon: '🤖',
+    icon: 'brain',
     grad: 'linear-gradient(135deg,#0a3e42,#dc143c)',
     title: 'AI Coaching',
-    desc: 'Stage-specific guidance — not generic tips. Checks ATS keyword gaps, generates interview prep guides and salary negotiation scripts, then hands you an onboarding checklist after you accept.',
+    desc: '13 stage-specific analyses — not generic tips. Checks ATS keyword gaps, generates interview prep guides and salary negotiation scripts, then hands you an onboarding checklist after you accept.',
   },
   {
-    icon: '📋',
+    icon: 'kanban-board',
     grad: 'linear-gradient(135deg,#0a3e42,#006b73)',
     title: 'Kanban + Table View',
-    desc: 'Drag applications from Applied → Phone Screen → Interview → Offer. Switch to table view for a spreadsheet-style overview with 15 configurable columns including AI match score and salary data.',
+    desc: 'Drag applications from Inbox → CV → Cover Letter → Sent → Interview. Switch to the table view for a spreadsheet-style overview with 15 configurable columns — resize, reorder, pin — including AI match score and salary data.',
   },
   {
-    icon: '📅',
+    icon: 'edit-pencil',
+    grad: 'linear-gradient(135deg,#8b1a2b,#f59e0b)',
+    title: 'Cover Letter Coach',
+    desc: 'A guided Prepare → Draft → Result workspace. Your personal guidance — structure, values, tone, no-gos — is applied to every letter, every generation is versioned, and a one-click humanizer makes AI prose sound like you.',
+  },
+  {
+    icon: 'download-circle',
+    grad: 'linear-gradient(135deg,#dc143c,#0a3e42)',
+    title: 'RAV / ORP Export',
+    desc: 'Prove your job search for Swiss unemployment insurance in one click: a formatted proof-of-search report covering all applications, exported to Google Sheets or CSV — with application type and proof method per entry.',
+  },
+  {
+    icon: 'calendar',
     grad: 'linear-gradient(135deg,#1a7045,#0a3e42)',
-    title: 'Calendar',
-    desc: 'Monthly and weekly calendar views show every interview, deadline, and follow-up. Log format, location, and interviewer details. Export to your calendar app when done.',
+    title: 'Calendar + Timeline',
+    desc: 'Monthly and weekly calendar views show every interview, deadline, and follow-up; the timeline lays out your entire search over time. Log format, location, and interviewer details, then export to Google Calendar or iCal.',
   },
   {
-    icon: '📁',
+    icon: 'folder',
     grad: 'linear-gradient(135deg,#f59e0b,#ef4444)',
     title: 'Google Drive',
-    desc: 'Connect your Google account and application-pal creates a folder for each job the moment you add it. CV templates and cover letter drafts copy over with formatting intact.',
+    desc: 'Connect your Google account and application-pal creates a folder for each job the moment you add it. CV templates and cover letter drafts copy over with formatting intact — exported as formatted Google Docs.',
   },
   {
-    icon: '👥',
+    icon: 'group',
     grad: 'linear-gradient(135deg,#dc143c,#8b1a2b)',
     title: 'Multi-user',
     desc: 'One instance, multiple users. Invite-based registration keeps your server private. Every user gets an isolated workspace — no one sees anyone else\'s applications.',
   },
   {
-    icon: '🏠',
+    icon: 'home',
     grad: 'linear-gradient(135deg,#8b1a2b,#0a3e42)',
     title: 'Flexible AI',
-    desc: 'Six AI providers supported: Ollama and LM Studio run fully offline on your hardware. Anthropic, OpenAI, Google Gemini, and OpenRouter connect via your own API key.',
+    desc: 'Six AI providers supported: Ollama and LM Studio run fully offline on your hardware. Anthropic, OpenAI, Google Gemini, and OpenRouter connect via your own API key — configured in the UI, not in config files.',
   },
 ];
 
 const stats = [
-  { num: '1', label: 'command to install' },
-  { num: '6', label: 'AI providers' },
+  { num: '13', label: 'AI analyses per application' },
+  { num: '6', label: 'AI providers — 2 fully local' },
+  { num: '3', label: 'languages · DE / EN / FR' },
   { num: '100%', label: 'self-hosted & private' },
-  { num: 'MIT', label: 'open source license' },
 ];
 
 const steps = [
   {
     num: '01',
-    title: 'Run one command',
-    desc: 'docker compose up — the full stack starts in under a minute.',
-    code: 'docker compose up -d',
+    title: 'Download & start',
+    desc: 'Fetch the compose file, set a database password in .env, and start the full stack — ready in about a minute.',
+    code: 'curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/docker-compose.release.yml\ncurl -O https://raw.githubusercontent.com/Doebele/application-pal/main/.env.example\ncp .env.example .env\ndocker compose -f docker-compose.release.yml up -d',
   },
   {
     num: '02',
     title: 'Create your account',
-    desc: 'Open localhost:8070, register, and you\'re in. No email verification, no credit card.',
+    desc: 'Open localhost:8070 — the setup form guides you through your first account (e-mail + password). No verification loop, no credit card.',
     code: 'open http://localhost:8070',
   },
   {
@@ -77,7 +91,7 @@ const steps = [
   <header class="nav">
     <div class="container nav-inner">
       <a href="/application-pal-website/" class="nav-logo">
-        <span class="logo-mark">📎</span>
+        <Icon name="attachment" size={22} class="logo-mark" />
         <span>application-pal</span>
       </a>
       <nav class="nav-links">
@@ -88,6 +102,7 @@ const steps = [
           GitHub
         </a>
         <a href={INSTALL_URL} class="btn-nav-cta">Get started</a>
+        <ThemeToggle />
       </nav>
     </div>
   </header>
@@ -103,14 +118,14 @@ const steps = [
       </div>
 
       <h1 class="hero-title" data-reveal>
-        Stop losing track.<br />
-        <span class="grad-text">Start landing jobs.</span>
+        stop losing track.<br />
+        <em class="grad-text">start landing jobs.</em>
       </h1>
 
       <p class="hero-sub" data-reveal>
         application-pal runs at <code>localhost:8070</code> — no cloud account,
         no subscription, no data leaving your computer.
-        One <code>docker&nbsp;compose&nbsp;up</code> and you're tracking.
+        One <code>docker&nbsp;compose</code> command and you're tracking.
       </p>
 
       <div class="hero-ctas" data-reveal>
@@ -126,7 +141,7 @@ const steps = [
 
       <div class="hero-stars" data-reveal>
         <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener">
-          <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=flat&logo=github&labelColor=fff4e4&color=0a3e42" alt="GitHub stars" width="120" height="20" loading="lazy" />
+          <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=flat&logo=github&labelColor=0b0b0c&color=8a8780" alt="GitHub stars" width="120" height="20" loading="lazy" />
         </a>
       </div>
 
@@ -137,11 +152,13 @@ const steps = [
           <span class="term-title">Terminal</span>
         </div>
         <div class="term-body">
-          <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">git clone https://github.com/Doebele/application-pal</span></div>
-          <div class="term-line dim"><span class="term-prompt">$</span> <span class="term-cmd">cd application-pal</span></div>
-          <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd typing">docker compose up -d</span></div>
+          <div class="term-line wrap"><span class="term-prompt">$</span> <span class="term-cmd">curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/docker-compose.release.yml</span></div>
+          <div class="term-line wrap"><span class="term-prompt">$</span> <span class="term-cmd">curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/.env.example</span></div>
+          <div class="term-line dim"><span class="term-prompt">$</span> <span class="term-cmd">cp .env.example .env &amp;&amp; $EDITOR .env</span></div>
+          <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd typing">docker compose -f docker-compose.release.yml up -d</span></div>
           <div class="term-line term-out">✔ Container application-pal-db-1 <span class="ok">Started</span></div>
-          <div class="term-line term-out">✔ Container application-pal-app-1 <span class="ok">Started</span></div>
+          <div class="term-line term-out">✔ Container application-pal-backend-1 <span class="ok">Started</span></div>
+          <div class="term-line term-out">✔ Container application-pal-frontend-1 <span class="ok">Started</span></div>
           <div class="term-line term-out dim">→ Open http://localhost:8070</div>
         </div>
       </div>
@@ -170,8 +187,8 @@ const steps = [
       <div class="features-grid">
         {features.map(f => (
           <div class="feature-card" data-reveal>
-            <div class="feature-icon-wrap" style={`background: ${f.grad}`}>
-              <span class="feature-icon">{f.icon}</span>
+            <div class="feature-icon-wrap">
+              <Icon name={f.icon} size={22} class="feature-icon" />
             </div>
             <h3 class="feature-title">{f.title}</h3>
             <p class="feature-desc">{f.desc}</p>
@@ -192,18 +209,24 @@ const steps = [
       <div class="tabs" data-reveal>
         <input type="radio" name="tab" id="tab-kanban" checked />
         <input type="radio" name="tab" id="tab-calendar" />
+        <input type="radio" name="tab" id="tab-timeline" />
         <input type="radio" name="tab" id="tab-ai" />
+        <input type="radio" name="tab" id="tab-letter" />
+        <input type="radio" name="tab" id="tab-rav" />
         <input type="radio" name="tab" id="tab-drive" />
         <input type="radio" name="tab" id="tab-multiuser" />
         <input type="radio" name="tab" id="tab-flexai" />
 
         <div class="tab-labels">
-          <label for="tab-kanban">📋 Kanban Board</label>
-          <label for="tab-calendar">📅 Calendar</label>
-          <label for="tab-ai">🤖 AI Coaching</label>
-          <label for="tab-drive">📁 Google Drive</label>
-          <label for="tab-multiuser">👥 Multi-user</label>
-          <label for="tab-flexai">🏠 Flexible AI</label>
+          <label for="tab-kanban"><Icon name="kanban-board" size={15} /> Kanban Board</label>
+          <label for="tab-calendar"><Icon name="calendar" size={15} /> Calendar</label>
+          <label for="tab-timeline"><Icon name="graph-up" size={15} /> Timeline</label>
+          <label for="tab-ai"><Icon name="brain" size={15} /> AI Coaching</label>
+          <label for="tab-letter"><Icon name="edit-pencil" size={15} /> Letter Coach</label>
+          <label for="tab-rav"><Icon name="download-circle" size={15} /> RAV Report</label>
+          <label for="tab-drive"><Icon name="folder" size={15} /> Google Drive</label>
+          <label for="tab-multiuser"><Icon name="group" size={15} /> Multi-user</label>
+          <label for="tab-flexai"><Icon name="home" size={15} /> Flexible AI</label>
         </div>
 
         <div class="browser-frame">
@@ -225,7 +248,7 @@ const steps = [
                 <rect x="16" y="126" width="148" height="26" rx="5" fill="#ffffff"/>
                 <rect x="36" y="133" width="65" height="12" rx="3" fill="#6b7f80"/>
                 <!-- columns -->
-                {['Wishlist','Applied','Interview','Offer'].map((col, i) => (
+                {['Inbox','CV','Sent','Interview'].map((col, i) => (
                   `<g key="${col}">
                     <rect x="${196 + i*176}" y="12" width="160" height="22" rx="4" fill="#ffffff"/>
                     <text x="${276 + i*176}" y="27" fill="#6b7f80" font-size="11" text-anchor="middle" font-family="monospace">${col}</text>
@@ -243,7 +266,7 @@ const steps = [
                 <rect x="560" y="52" width="100" height="10" rx="2" fill="#212121" opacity=".9"/>
                 <rect x="560" y="68" width="70" height="8" rx="2" fill="#1a7045" opacity=".7"/>
               </svg>
-              <span class="ph-label">📋 Kanban Board — add screenshots/kanban.png to show real UI</span>
+              <span class="ph-label">Kanban Board — add screenshots/kanban.png to show real UI</span>
             </div>
           </div>
 
@@ -275,7 +298,28 @@ const steps = [
                 <rect x="505" y="112" width="106" height="18" rx="3" fill="#0a3e42" opacity=".7"/>
                 <text x="515" y="124" fill="#fff" font-size="9" font-family="monospace">Follow-up email</text>
               </svg>
-              <span class="ph-label">📅 Calendar — add screenshots/calendar.png to show real UI</span>
+              <span class="ph-label">Calendar — add screenshots/calendar.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-timeline">
+            <img src="/application-pal-website/screenshots/timeline.png" alt="Timeline view" class="screenshot-img" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-timeline').style.display='flex'" />
+            <div id="ph-timeline" class="screenshot-ph">
+              <span class="ph-label">Timeline — add screenshots/timeline.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-letter">
+            <img src="/application-pal-website/screenshots/letter-coach.png" alt="Cover Letter Coach" class="screenshot-img" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-letter').style.display='flex'" />
+            <div id="ph-letter" class="screenshot-ph">
+              <span class="ph-label">Letter Coach — add screenshots/letter-coach.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-rav">
+            <img src="/application-pal-website/screenshots/rav-dialog.png" alt="RAV report export" class="screenshot-img" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-rav').style.display='flex'" />
+            <div id="ph-rav" class="screenshot-ph">
+              <span class="ph-label">RAV Report — add screenshots/rav-dialog.png to show real UI</span>
             </div>
           </div>
 
@@ -316,7 +360,7 @@ const steps = [
                 <text x="344" y="475" fill="#2a3f5f" font-size="11" font-family="monospace">Ask AI Coach anything…</text>
                 <rect x="856" y="452" width="32" height="38" rx="8" fill="#0a3e42" opacity=".25"/>
               </svg>
-              <span class="ph-label">🤖 AI Coaching — add screenshots/ai-coaching.png to show real UI</span>
+              <span class="ph-label">AI Coaching — add screenshots/ai-coaching.png to show real UI</span>
             </div>
           </div>
 
@@ -343,7 +387,7 @@ const steps = [
                   </g>`;
                 })}
               </svg>
-              <span class="ph-label">📁 Google Drive — add screenshots/google-drive.png to show real UI</span>
+              <span class="ph-label">Google Drive — add screenshots/google-drive.png to show real UI</span>
             </div>
           </div>
 
@@ -374,7 +418,7 @@ const steps = [
                 <rect x="36" y="430" width="824" height="36" rx="6" fill="#0a3e42" opacity=".1"/>
                 <text x="156" y="452" fill="#0a3e42" font-size="11" text-anchor="middle" font-family="monospace">+ Invite new user</text>
               </svg>
-              <span class="ph-label">👥 Multi-user — add screenshots/multi-user.png to show real UI</span>
+              <span class="ph-label">Multi-user — add screenshots/multi-user.png to show real UI</span>
             </div>
           </div>
 
@@ -408,7 +452,7 @@ const steps = [
                   </g>`;
                 })}
               </svg>
-              <span class="ph-label">🏠 Flexible AI — add screenshots/flexible-ai.png to show real UI</span>
+              <span class="ph-label">Flexible AI — add screenshots/flexible-ai.png to show real UI</span>
             </div>
           </div>
         </div>
@@ -443,16 +487,16 @@ const steps = [
       <div class="social-grid">
         <div class="social-stars" data-reveal>
           <a href={`${GITHUB_URL}/stargazers`} target="_blank" rel="noopener">
-            <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=for-the-badge&logo=github&labelColor=fff4e4&color=0a3e42" alt="GitHub Stars" width="160" height="28" loading="lazy" />
+            <img src="https://img.shields.io/github/stars/Doebele/application-pal?style=for-the-badge&logo=github&labelColor=1a1a1d&color=ff5b2e" alt="GitHub Stars" width="160" height="28" loading="lazy" />
           </a>
-          <p class="social-sub">Built in the open. MIT licensed. Actively maintained.</p>
+          <p class="social-sub">Built in the open. MIT licensed — © 2026 Claus Medvesek. Actively maintained.</p>
           <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
-            <img src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=fff4e4&color=1a7045" alt="MIT License" width="90" height="20" loading="lazy" />
+            <img src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=1a1a1d&color=ff5b2e" alt="MIT License — © 2026 Claus Medvesek" width="90" height="20" loading="lazy" />
           </a>
         </div>
         <blockquote class="social-quote" data-reveal>
-          <p>"[Placeholder] application-pal completely changed how I manage my job search. The AI coaching alone is worth it."</p>
-          <footer>— Beta user placeholder</footer>
+          <p>Built for the Swiss job market: RAV/ORP proof-of-search exports, CHF salary checks with desired-salary reference, and a UI in German, French, and English — while running 100% on your own machine.</p>
+          <footer>— What makes application-pal different</footer>
         </blockquote>
       </div>
     </div>
@@ -462,12 +506,13 @@ const steps = [
   <section class="cta-section">
     <div class="cta-glow" aria-hidden="true"></div>
     <div class="container cta-inner" data-reveal>
-      <h2 class="cta-title">Try it now.<br /><span class="grad-text">Own your data.</span></h2>
+      <h2 class="cta-title">try it now.<br /><em class="grad-text">own your data.</em></h2>
       <p class="cta-sub">One command. Runs on any machine with Docker. Free forever.</p>
-      <pre class="cta-code"><code><span class="code-comment"># Clone and start</span>
-git clone https://github.com/Doebele/application-pal.git
-cd application-pal
-docker compose up -d</code></pre>
+      <pre class="cta-code"><code><span class="code-comment"># Download and start</span>
+curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/docker-compose.release.yml
+curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/.env.example
+cp .env.example .env
+docker compose -f docker-compose.release.yml up -d</code></pre>
       <div class="cta-btns">
         <a href={INSTALL_URL} class="btn-primary">
           Full install guide
@@ -485,13 +530,14 @@ docker compose up -d</code></pre>
   <footer class="footer">
     <div class="container footer-inner">
       <a href="/application-pal-website/" class="footer-brand">
-        <span class="logo-mark">📎</span>
+        <Icon name="attachment" size={20} class="logo-mark" />
         <span>application-pal</span>
       </a>
       <div class="footer-links">
         <a href={GITHUB_URL} target="_blank" rel="noopener">GitHub</a>
         <a href={INSTALL_URL}>Install</a>
         <a href="#features">Features</a>
+        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">MIT License · © 2026 Claus Medvesek</a>
       </div>
     </div>
   </footer>
@@ -506,21 +552,22 @@ docker compose up -d</code></pre>
 </script>
 
 <style>
-  /* ── GLOBALS ─────────────────────────────────────────────── */
+  /* ── GLOBALS — medvesek.com design system (ink / paper / accent) ── */
   :root {
-    --bg:      #fff4e4;
-    --bg2:     #fef8ee;
-    --bg3:     #ffffff;
-    --border:  rgba(10,62,66,0.14);
-    --text:    #212121;
-    --muted:   #6b7f80;
-    --accent:  #0a3e42;
-    --accent2: #dc143c;
-    --green:   #1a7045;
-    --grad:    linear-gradient(135deg, #0a3e42, #dc143c);
-    --font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --mono:    'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    --r:       10px;
+    --bg:      #0b0b0c;
+    --bg2:     #1a1a1d;
+    --bg3:     #111113;
+    --border:  #f5f3ee24;
+    --text:    #f5f3ee;
+    --muted:   #8a8780;
+    --accent:  #ff5b2e;
+    --accent2: #ff5b2e;
+    --green:   #8a8780;
+    --line:    #f5f3ee24;
+    --font:    'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --serif:   'Instrument Serif', ui-serif, Georgia, serif;
+    --mono:    'Fira Code', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --r:       6px;
   }
 
   /* Scroll reveal base state */
@@ -542,9 +589,9 @@ docker compose up -d</code></pre>
   /* ── NAV ──────────────────────────────────────────────────── */
   .nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255, 244, 228, 0.88);
+    background: var(--nav-bg);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
@@ -552,39 +599,42 @@ docker compose up -d</code></pre>
   }
   .nav-logo {
     display: flex; align-items: center; gap: 0.5rem;
-    font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none;
+    font-family: var(--serif);
+    font-size: 1.35rem; letter-spacing: 0;
+    color: var(--text); text-decoration: none;
   }
-  .logo-mark { font-size: 1.2rem; }
+  .logo-mark { color: var(--accent-ink); }
   .nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.88rem; }
   .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
   .nav-links a:hover { color: var(--text); }
   .nav-gh { display: flex; align-items: center; gap: 0.4rem; }
   .btn-nav-cta {
-    background: var(--grad); color: #fff !important;
-    padding: 0.42rem 1.1rem; border-radius: 8px;
-    font-weight: 600; transition: opacity 0.15s, transform 0.1s;
+    color: var(--accent-ink) !important;
+    padding: 0.42rem 1.1rem; border-radius: 100px;
+    border: 1px solid var(--accent);
+    font-weight: 500; transition: background 0.15s, color 0.15s;
   }
-  .btn-nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-nav-cta:hover { background: var(--accent); color: #0b0b0c !important; }
 
   /* ── HERO ─────────────────────────────────────────────────── */
   .hero {
     position: relative; overflow: hidden;
-    padding: 6rem 0 4rem;
+    padding: 7rem 0 4.5rem;
     background: var(--bg);
   }
   .hero-glow {
     position: absolute; border-radius: 50%;
-    filter: blur(80px); pointer-events: none;
+    filter: blur(90px); pointer-events: none;
   }
   .glow-1 {
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(10,62,66,0.12) 0%, transparent 70%);
-    top: -200px; left: -100px;
+    background: radial-gradient(circle, rgba(255,91,46,0.07) 0%, transparent 70%);
+    top: -220px; left: -120px;
   }
   .glow-2 {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(220,20,60,0.09) 0%, transparent 70%);
-    top: -100px; right: -80px;
+    background: radial-gradient(circle, rgba(245,243,238,0.05) 0%, transparent 70%);
+    top: -120px; right: -100px;
   }
   .hero-inner {
     position: relative; display: flex; flex-direction: column;
@@ -592,71 +642,71 @@ docker compose up -d</code></pre>
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(10,62,66,0.07);
-    border: 1px solid rgba(10,62,66,0.22);
+    background: transparent;
+    border: 1px solid var(--line);
     border-radius: 100px; padding: 0.35rem 1rem;
     font-size: 0.8rem; color: var(--muted);
   }
   .badge-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 6px var(--green);
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
     animation: pulse 2s infinite;
   }
   @keyframes pulse {
     0%,100% { opacity: 1; } 50% { opacity: 0.4; }
   }
   .hero-title {
-    font-size: clamp(2.4rem, 6.5vw, 4rem);
-    font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3.4rem, 9vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
     color: var(--text);
   }
   .grad-text {
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-style: italic;
+    color: var(--accent-ink);
   }
   .hero-sub {
-    max-width: 580px; font-size: 1.1rem;
+    max-width: 580px; font-size: 1.08rem; font-weight: 300;
     color: var(--muted); line-height: 1.7;
   }
   .hero-sub code {
-    font-family: var(--mono); font-size: 0.92em;
-    background: rgba(10,62,66,0.08);
-    border: 1px solid rgba(10,62,66,0.18);
-    padding: 0.1rem 0.4rem; border-radius: 5px;
-    color: var(--accent);
+    font-family: var(--mono); font-size: 0.85em;
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    padding: 0.1rem 0.4rem; border-radius: 4px;
+    color: var(--accent-ink);
   }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--grad); color: #fff;
+    background: var(--accent); color: #0b0b0c;
     padding: 0.75rem 1.75rem; border-radius: var(--r);
-    font-weight: 700; font-size: 1rem; text-decoration: none;
-    transition: opacity 0.15s, transform 0.1s, box-shadow 0.2s;
-    box-shadow: 0 4px 24px rgba(10,62,66,0.3);
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
   }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(10,62,66,0.45); text-decoration: none; }
+  .btn-primary:hover { background: #ff7049; transform: translateY(-1px); text-decoration: none; }
   .btn-ghost {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: transparent;
-    border: 1.5px solid rgba(10,62,66,0.25);
+    border: 1px solid var(--line);
     color: var(--text); padding: 0.75rem 1.5rem;
-    border-radius: var(--r); font-weight: 600; font-size: 1rem;
-    text-decoration: none; transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    border-radius: var(--r); font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; transition: border-color 0.15s, transform 0.1s;
   }
-  .btn-ghost:hover { background: rgba(10,62,66,0.06); border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+  .btn-ghost:hover { border-color: var(--text); transform: translateY(-1px); text-decoration: none; }
   .hero-stars { margin-top: -0.5rem; }
 
   /* Floating terminal */
   .terminal-float {
     margin-top: 1rem;
-    background: #0a3e42;
-    border: 1px solid rgba(255,244,228,0.12);
+    background: var(--bg3);
+    border: 1px solid var(--line);
     border-radius: var(--r);
     overflow: hidden;
     width: 100%; max-width: 560px;
-    box-shadow: 0 20px 60px rgba(10,62,66,0.35), 0 0 0 1px rgba(220,20,60,0.08);
     animation: floatY 4s ease-in-out infinite;
   }
   @keyframes floatY {
@@ -664,19 +714,20 @@ docker compose up -d</code></pre>
     50%      { transform: translateY(-8px); }
   }
   .term-header {
-    background: #0c4a50; padding: 0.55rem 1rem;
+    background: var(--bg2); padding: 0.55rem 1rem;
     display: flex; align-items: center; gap: 0.4rem;
-    border-bottom: 1px solid rgba(255,244,228,0.1);
+    border-bottom: 1px solid var(--line);
   }
   .dot { width: 11px; height: 11px; border-radius: 50%; }
   .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
-  .term-title { margin-left: auto; font-family: var(--mono); font-size: 0.75rem; color: rgba(255,244,228,0.4); }
-  .term-body { padding: 0.85rem 1.25rem; font-family: var(--mono); font-size: 0.8rem; }
+  .term-title { margin-left: auto; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+  .term-body { padding: 0.85rem 1.25rem; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; }
   .term-line { display: flex; gap: 0.75rem; line-height: 1.9; }
-  .term-prompt { color: #dc143c; user-select: none; }
-  .term-cmd { color: #fff4e4; }
-  .term-out { color: rgba(255,244,228,0.55); padding-left: 1.5rem; }
-  .ok { color: #5fcf8a; }
+  .term-line.wrap .term-cmd { word-break: break-all; white-space: normal; }
+  .term-prompt { color: var(--accent-ink); user-select: none; }
+  .term-cmd { color: var(--text); }
+  .term-out { color: var(--muted); padding-left: 1.5rem; }
+  .ok { color: var(--accent-ink); }
   .dim { opacity: 0.55; }
   .typing::after {
     content: '▍'; animation: blink 1.1s step-end infinite;
@@ -685,111 +736,126 @@ docker compose up -d</code></pre>
 
   /* ── STATS BAR ────────────────────────────────────────────── */
   .stats-bar {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg3);
-    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    padding: 1.6rem 0;
   }
   .stats-inner {
     display: flex; flex-wrap: wrap;
-    justify-content: center; gap: 2rem 3rem;
+    justify-content: center; gap: 2rem 3.5rem;
   }
   .stat {
     display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
   }
   .stat-num {
-    font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-family: var(--mono);
+    font-size: 1.9rem; font-weight: 500; letter-spacing: -0.02em;
+    color: var(--accent-ink);
   }
-  .stat-label { font-size: 0.82rem; color: var(--muted); }
+  .stat-label {
+    font-size: 0.72rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
 
   /* ── SHARED SECTION ───────────────────────────────────────── */
   .section { padding: 5.5rem 0; }
   .section-header { text-align: center; margin-bottom: 3rem; }
   .section-title {
-    font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
-    letter-spacing: -0.025em; margin-bottom: 0.75rem;
+    font-family: var(--serif);
+    font-weight: 400;
+    text-transform: lowercase;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -0.01em;
+    margin-bottom: 0.85rem;
+    color: var(--text);
   }
-  .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+  .section-sub { color: var(--muted); font-size: 1.02rem; font-weight: 300; max-width: 560px; margin: 0 auto; }
 
   /* ── FEATURES ─────────────────────────────────────────────── */
-  .features { background: var(--bg2); }
+  .features { background: var(--bg); }
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
   }
   .feature-card {
-    background: var(--bg3);
-    border: 1px solid rgba(10,62,66,0.1);
-    border-radius: var(--r);
+    background: var(--bg);
     padding: 1.75rem;
     cursor: default;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: background 0.2s;
   }
   .feature-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(10,62,66,0.3);
-    box-shadow: 0 8px 32px rgba(10,62,66,0.1), 0 0 0 1px rgba(10,62,66,0.08);
+    background: var(--bg3);
   }
   .feature-icon-wrap {
-    width: 44px; height: 44px; border-radius: 10px;
+    width: 40px; height: 40px; border-radius: var(--r);
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1rem; font-size: 1.4rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid var(--line);
+    background: var(--bg3);
   }
-  .feature-icon { filter: drop-shadow(0 0 4px rgba(0,0,0,0.3)); }
-  .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .feature-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+  .feature-icon { color: var(--accent-ink); }
+  .feature-title { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+  .feature-desc { color: var(--muted); font-size: 0.88rem; font-weight: 300; line-height: 1.65; }
 
   /* ── SCREENSHOTS ──────────────────────────────────────────── */
-  .screenshots { background: var(--bg); }
+  .screenshots { background: var(--bg3); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .tabs input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
   .tab-labels {
     display: flex; flex-wrap: wrap; gap: 0.5rem;
     justify-content: center; margin-bottom: 1.75rem;
   }
   .tab-labels label {
-    cursor: pointer; padding: 0.5rem 1.2rem;
+    cursor: pointer; padding: 0.45rem 1.1rem;
+    display: inline-flex; align-items: center; gap: 0.45rem;
     border-radius: 100px;
-    border: 1px solid rgba(10,62,66,0.18);
-    background: var(--bg3); color: var(--muted);
-    font-size: 0.88rem; font-weight: 600;
+    border: 1px solid var(--line);
+    background: transparent; color: var(--muted);
+    font-size: 0.85rem; font-weight: 500;
     transition: all 0.15s; user-select: none;
   }
-  .tab-labels label:hover { border-color: var(--accent); color: var(--text); }
+  .tab-labels label:hover { border-color: var(--muted); color: var(--text); }
   #tab-kanban:checked ~ .tab-labels label[for="tab-kanban"],
   #tab-calendar:checked ~ .tab-labels label[for="tab-calendar"],
+  #tab-timeline:checked ~ .tab-labels label[for="tab-timeline"],
   #tab-ai:checked ~ .tab-labels label[for="tab-ai"],
+  #tab-letter:checked ~ .tab-labels label[for="tab-letter"],
+  #tab-rav:checked ~ .tab-labels label[for="tab-rav"],
   #tab-drive:checked ~ .tab-labels label[for="tab-drive"],
   #tab-multiuser:checked ~ .tab-labels label[for="tab-multiuser"],
   #tab-flexai:checked ~ .tab-labels label[for="tab-flexai"] {
-    background: var(--grad); border-color: transparent; color: #fff;
-    box-shadow: 0 4px 16px rgba(10,62,66,0.25);
+    background: var(--text); border-color: var(--text); color: var(--bg);
   }
   .browser-frame {
-    border: 1px solid var(--border); border-radius: var(--r);
+    border: 1px solid var(--line); border-radius: var(--r);
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(79,142,247,0.05);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.45);
   }
   .browser-chrome {
-    background: var(--bg3); padding: 0.65rem 1rem;
+    background: var(--bg2); padding: 0.65rem 1rem;
     display: flex; align-items: center; gap: 0.45rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   .bdot { width: 12px; height: 12px; border-radius: 50%; }
   .bdot.r { background: #ff5f57; } .bdot.y { background: #febc2e; } .bdot.g { background: #28c840; }
   .address-bar {
-    flex: 1; background: var(--bg2); border-radius: 6px;
+    flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
     padding: 0.25rem 0.75rem; font-family: var(--mono);
-    font-size: 0.78rem; color: var(--muted); text-align: center;
+    font-size: 0.74rem; color: var(--muted); text-align: center;
     max-width: 280px; margin: 0 auto;
   }
   .tab-panel { display: none; }
   #tab-kanban:checked ~ .browser-frame #panel-kanban,
   #tab-calendar:checked ~ .browser-frame #panel-calendar,
+  #tab-timeline:checked ~ .browser-frame #panel-timeline,
   #tab-ai:checked ~ .browser-frame #panel-ai,
+  #tab-letter:checked ~ .browser-frame #panel-letter,
+  #tab-rav:checked ~ .browser-frame #panel-rav,
   #tab-drive:checked ~ .browser-frame #panel-drive,
   #tab-multiuser:checked ~ .browser-frame #panel-multiuser,
   #tab-flexai:checked ~ .browser-frame #panel-flexai { display: block; }
@@ -801,41 +867,39 @@ docker compose up -d</code></pre>
   .screenshot-ph svg { width: 100%; height: auto; display: block; }
   .ph-label {
     padding: 0.6rem; font-family: var(--mono); font-size: 0.72rem;
-    color: var(--muted); text-align: center; background: var(--bg3);
+    color: var(--muted); text-align: center; background: var(--bg2);
     width: 100%;
   }
 
   /* ── HOW IT WORKS ─────────────────────────────────────────── */
-  .how { background: var(--bg2); }
+  .how { background: var(--bg); }
   .steps-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem; position: relative;
   }
   .step-card {
-    background: var(--bg3);
-    border: 1px solid rgba(10,62,66,0.1);
-    border-radius: var(--r); padding: 1.75rem;
-    position: relative;
-    transition: border-color 0.2s, transform 0.2s;
+    background: transparent;
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0 0;
+    transition: border-color 0.2s;
   }
-  .step-card:hover { border-color: rgba(10,62,66,0.3); transform: translateY(-3px); }
+  .step-card:hover { border-top-color: var(--accent); }
   .step-num-badge {
-    font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; margin-bottom: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--accent-ink); margin-bottom: 0.75rem;
   }
   .step-connector {
     display: none;
   }
-  .step-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-  .step-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 0.75rem; }
+  .step-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .step-desc { color: var(--muted); font-size: 0.9rem; font-weight: 300; line-height: 1.65; margin-bottom: 0.75rem; }
   .step-code {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 7px; padding: 0.6rem 0.85rem;
-    font-family: var(--mono); font-size: 0.82rem; color: var(--green);
-    overflow-x: auto;
+    background: var(--bg3); border: 1px solid var(--line);
+    border-radius: var(--r); padding: 0.6rem 0.85rem;
+    font-family: var(--mono); font-size: 0.76rem; font-weight: 500; color: var(--accent-ink);
+    overflow-x: auto; white-space: pre-wrap; word-break: break-all;
   }
 
   /* ── SOCIAL ───────────────────────────────────────────────── */
@@ -848,29 +912,29 @@ docker compose up -d</code></pre>
     display: flex; flex-direction: column; align-items: center; gap: 0.65rem;
     min-width: 220px;
   }
-  .social-sub { color: var(--muted); font-size: 0.85rem; text-align: center; }
+  .social-sub { color: var(--muted); font-size: 0.85rem; font-weight: 300; text-align: center; }
   .social-quote {
     max-width: 460px;
-    background: var(--bg3);
-    border: 1px solid rgba(10,62,66,0.1);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--r); padding: 1.5rem 1.75rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--r) var(--r) 0; padding: 1.5rem 1.75rem;
     transition: border-color 0.2s;
   }
-  .social-quote:hover { border-left-color: var(--accent2); }
-  .social-quote p { font-style: italic; color: var(--muted); margin-bottom: 0.75rem; line-height: 1.7; }
-  .social-quote footer { font-size: 0.82rem; color: var(--muted); }
+  .social-quote:hover { border-color: var(--muted); border-left-color: var(--accent); }
+  .social-quote p { font-family: var(--serif); font-size: 1.25rem; font-style: italic; color: var(--text); margin-bottom: 0.75rem; line-height: 1.55; }
+  .social-quote footer { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
 
   /* ── INSTALL CTA ──────────────────────────────────────────── */
   .cta-section {
     position: relative; overflow: hidden;
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
+    background: var(--bg3);
+    border-top: 1px solid var(--line);
     padding: 6rem 0;
   }
   .cta-glow {
     position: absolute; width: 800px; height: 400px;
-    background: radial-gradient(ellipse, rgba(10,62,66,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(255,91,46,0.06) 0%, transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%, -50%);
     pointer-events: none;
   }
@@ -879,22 +943,25 @@ docker compose up -d</code></pre>
     align-items: center; text-align: center; gap: 1.5rem;
   }
   .cta-title {
-    font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.15;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05; letter-spacing: -0.01em;
   }
-  .cta-sub { color: var(--muted); font-size: 1.05rem; }
+  .cta-sub { color: var(--muted); font-size: 1.02rem; font-weight: 300; }
   .cta-code {
-    background: var(--bg); border: 1px solid var(--border);
+    background: var(--bg); border: 1px solid var(--line);
     border-radius: var(--r); padding: 1.25rem 1.5rem;
-    font-family: var(--mono); font-size: 0.88rem; color: var(--green);
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 500; color: var(--accent-ink);
     overflow-x: auto; width: 100%; max-width: 560px; text-align: left;
+    white-space: pre-wrap; word-break: break-all;
   }
   .code-comment { color: var(--muted); }
   .cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
   /* ── FOOTER ───────────────────────────────────────────────── */
   .footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     background: var(--bg); padding: 2rem 0;
   }
   .footer-inner {
@@ -903,7 +970,8 @@ docker compose up -d</code></pre>
   }
   .footer-brand {
     display: flex; align-items: center; gap: 0.5rem;
-    font-weight: 700; font-size: 0.95rem;
+    font-family: var(--serif);
+    font-size: 1.2rem;
     color: var(--text); text-decoration: none;
   }
   .footer-links { display: flex; gap: 1.5rem; font-size: 0.88rem; }
@@ -914,8 +982,8 @@ docker compose up -d</code></pre>
   @media (max-width: 640px) {
     .nav-links a:not(.btn-nav-cta):not(.nav-gh) { display: none; }
     .stats-inner { gap: 1.5rem 2rem; }
-    .stat-num { font-size: 1.6rem; }
+    .stat-num { font-size: 1.5rem; }
     .terminal-float { font-size: 0.72rem; }
-    .hero { padding: 4rem 0 2.5rem; }
+    .hero { padding: 4.5rem 0 2.5rem; }
   }
 </style>

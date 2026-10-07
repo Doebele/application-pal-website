@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 const GITHUB_URL = 'https://github.com/Doebele/application-pal';
 ---
@@ -12,7 +14,7 @@ const GITHUB_URL = 'https://github.com/Doebele/application-pal';
   <header class="nav">
     <div class="container nav-inner">
       <a href="/application-pal-website/" class="nav-logo">
-        <span class="logo-icon">📎</span>
+        <Icon name="attachment" size={22} class="logo-icon" />
         <span>application-pal</span>
       </a>
       <nav class="nav-links">
@@ -22,6 +24,7 @@ const GITHUB_URL = 'https://github.com/Doebele/application-pal';
           </svg>
           GitHub
         </a>
+        <ThemeToggle />
       </nav>
     </div>
   </header>
@@ -42,84 +45,93 @@ const GITHUB_URL = 'https://github.com/Doebele/application-pal';
           <li>
             <strong>Docker Desktop</strong> — <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">download for Mac, Windows, or Linux</a>
           </li>
-          <li>
-            <strong>Git</strong> — to clone the repo (or <a href={`${GITHUB_URL}/archive/refs/heads/main.zip`} target="_blank" rel="noopener">download the ZIP</a>)
-          </li>
+          <li><code>curl</code> (pre-installed on Mac and Linux) to download two files</li>
           <li>2 GB free disk space for images and database</li>
         </ul>
       </section>
 
       <!-- STEP 1 -->
       <section class="step-section">
-        <h2><span class="step-badge">1</span> Clone the repository</h2>
-        <p>Open your terminal and clone the project:</p>
-        <pre class="code-block"><code>git clone https://github.com/Doebele/application-pal.git
-cd application-pal</code></pre>
+        <h2><span class="step-badge">1</span> Download the compose file and .env template</h2>
+        <p>No clone required — the release compose file pulls pre-built images. Run in a dedicated folder:</p>
+        <pre class="code-block"><code>curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/docker-compose.release.yml
+curl -O https://raw.githubusercontent.com/Doebele/application-pal/main/.env.example
+cp .env.example .env</code></pre>
+        <p class="note">
+          Open <code>.env</code> and change <code>POSTGRES_PASSWORD</code> to a secure value
+          of your choice — this is the only mandatory edit.
+        </p>
       </section>
 
       <!-- STEP 2 -->
       <section class="step-section">
         <h2><span class="step-badge">2</span> Start the services</h2>
-        <p>Run Docker Compose in detached mode. This pulls the images and starts everything:</p>
-        <pre class="code-block"><code>docker compose up -d</code></pre>
+        <p>Run Docker Compose in detached mode. This pulls the images and starts the database, backend, and frontend:</p>
+        <pre class="code-block"><code>docker compose -f docker-compose.release.yml up -d</code></pre>
         <p class="note">
-          First run downloads container images — this takes 1–3 minutes depending on your connection.
+          The first start takes about a minute while all services initialise.
           Subsequent starts are fast.
         </p>
         <p>You should see output similar to:</p>
         <pre class="code-block output"><code>[+] Running 3/3
- ✔ Container application-pal-db-1       Started
- ✔ Container application-pal-backend-1  Started
- ✔ Container application-pal-app-1      Started</code></pre>
+ ✔ Container application-pal-db-1        Healthy
+ ✔ Container application-pal-backend-1   Healthy
+ ✔ Container application-pal-frontend-1  Started</code></pre>
       </section>
 
       <!-- STEP 3 -->
       <section class="step-section">
-        <h2><span class="step-badge">3</span> Open the app</h2>
+        <h2><span class="step-badge">3</span> Create your account</h2>
         <p>Navigate to the app in your browser:</p>
         <pre class="code-block"><code>http://localhost:8070</code></pre>
-        <p>Click <strong>Register</strong>, pick a username and password, and you're in.</p>
+        <p>
+          The setup form guides you through creating your first account (e-mail + password,
+          minimum 8 characters). Additional users join later via invite links.
+        </p>
       </section>
 
       <!-- STEP 4 -->
       <section class="step-section">
         <h2><span class="step-badge">4</span> Add your first application</h2>
         <p>
-          Once logged in, click <strong>+ New Application</strong> and fill in the company
-          name, role, and status. The Kanban board will show it in the <em>Wishlist</em> column.
-          Move it through stages as your process progresses.
+          Once logged in, click <strong>+ Import job</strong> and paste a job-ad URL, or add the
+          company and role manually. The board shows it in the <em>Inbox</em> column — move it
+          through <em>CV → Cover Letter → Sent → Interview</em> as your process progresses.
         </p>
       </section>
 
       <!-- AI COACHING (OPTIONAL) -->
       <section class="step-section">
-        <h2><span class="step-badge">5</span> (Optional) Enable AI Coaching</h2>
+        <h2><span class="step-badge">5</span> (Optional) Enable AI features</h2>
         <p>
-          application-pal supports two AI backends — you only need one:
+          Six providers are supported — configured under <strong>Settings → AI Integration</strong>
+          in the app, no config files needed. Without any provider the app runs as a pure
+          management tool.
         </p>
         <ul class="req-list">
           <li>
-            <strong>OpenAI / cloud API</strong> — add your API key to the <code>.env</code> file
-            in the project root.
+            <strong>LM Studio / Ollama (local, free)</strong> — install
+            <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> or
+            <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and load a model
+            (Qwen3 8B or better, e.g. <code>ollama pull qwen3:8b</code>).
           </li>
           <li>
-            <strong>Local Ollama</strong> — <a href="https://ollama.com/download" target="_blank" rel="noopener">install Ollama</a>,
-            pull a model (<code>ollama pull llama3.2</code>), and point the config at
-            <code>http://host.docker.internal:11434</code>.
+            <strong>Cloud providers</strong> — Anthropic, OpenAI, Google Gemini (free tier),
+            or OpenRouter with your own API key.
           </li>
         </ul>
-        <p>Detailed configuration options are in the project <a href={`${GITHUB_URL}#readme`} target="_blank" rel="noopener">README</a>.</p>
+        <p>Detailed configuration options are in the project <a href={`${GITHUB_URL}#readme`} target="_blank" rel="noopener">README</a> and <a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">docs/ai-setup.md</a>.</p>
       </section>
 
       <!-- STOPPING -->
       <section class="step-section">
         <h2>Stopping &amp; updating</h2>
         <pre class="code-block"><code># Stop containers (data is preserved)
-docker compose down
+docker compose -f docker-compose.release.yml down
 
-# Pull latest updates
-git pull
-docker compose up -d --build</code></pre>
+# Update to the latest release
+docker compose -f docker-compose.release.yml pull
+docker compose -f docker-compose.release.yml up -d</code></pre>
       </section>
 
       <!-- TROUBLESHOOTING -->
@@ -128,22 +140,22 @@ docker compose up -d --build</code></pre>
         <details class="faq">
           <summary>Port 8070 is already in use</summary>
           <p>
-            Edit <code>docker-compose.yml</code> and change <code>8070:8070</code> to
-            <code>8071:8070</code> (or any free port), then open <code>http://localhost:8071</code>.
+            Edit <code>docker-compose.release.yml</code> and change <code>8070:80</code> to
+            <code>8170:80</code> (or any free port), then open <code>http://localhost:8170</code>.
           </p>
         </details>
         <details class="faq">
           <summary>Docker says "no configuration file provided"</summary>
           <p>
-            Make sure you're in the <code>application-pal</code> directory and that
-            <code>docker-compose.yml</code> exists. Run <code>ls</code> to confirm.
+            Make sure you're in the folder that contains
+            <code>docker-compose.release.yml</code>. Run <code>ls</code> to confirm.
           </p>
         </details>
         <details class="faq">
           <summary>App loads but shows a database error</summary>
           <p>
             Wait a few seconds and refresh — the database container may still be initialising.
-            If it persists, run <code>docker compose logs db</code> for details.
+            If it persists, run <code>docker compose -f docker-compose.release.yml logs db</code> for details.
           </p>
         </details>
       </section>
@@ -158,21 +170,13 @@ docker compose up -d --build</code></pre>
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-icon">📎</span>
+        <Icon name="attachment" size={20} class="logo-icon" />
         <span>application-pal</span>
       </div>
       <div class="footer-links">
         <a href={GITHUB_URL} target="_blank" rel="noopener">GitHub</a>
         <a href="/application-pal-website/">Home</a>
-        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">
-          <img
-            src="https://img.shields.io/github/license/Doebele/application-pal?style=flat&labelColor=161b22&color=3fb950"
-            alt="MIT License"
-            width="80"
-            height="20"
-            loading="lazy"
-          />
-        </a>
+        <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">MIT License · © 2026 Claus Medvesek</a>
       </div>
     </div>
   </footer>
@@ -181,7 +185,7 @@ docker compose up -d --build</code></pre>
 <style>
   .nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255, 244, 228, 0.88);
+    background: var(--nav-bg);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
   }
@@ -193,7 +197,7 @@ docker compose up -d --build</code></pre>
     display: flex; align-items: center; gap: 0.5rem;
     font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none;
   }
-  .logo-icon { font-size: 1.25rem; }
+  .logo-icon { color: var(--accent); }
   .nav-links { display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem; }
   .nav-links a { color: var(--text-muted); }
   .nav-links a:hover { color: var(--text); text-decoration: none; }
@@ -202,7 +206,8 @@ docker compose up -d --build</code></pre>
   .install-page { padding: 3rem 0 4rem; }
   .page-header { margin-bottom: 3rem; }
   .page-header h1 {
-    font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800;
+    font-family: var(--font-serif); font-weight: 400; text-transform: lowercase;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
     margin-bottom: 0.75rem;
   }
   .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; }
@@ -220,8 +225,9 @@ docker compose up -d --build</code></pre>
   .step-badge {
     display: inline-flex; align-items: center; justify-content: center;
     min-width: 28px; height: 28px;
-    background: var(--accent); color: #fff;
-    border-radius: 6px; font-size: 0.8rem; font-weight: 800;
+    background: transparent; color: var(--accent-ink);
+    border: 1px solid var(--accent);
+    border-radius: 6px; font-size: 0.8rem; font-weight: 500; font-family: var(--font-mono);
     padding: 0 6px;
   }
   .step-section p { color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.7; }
@@ -229,8 +235,9 @@ docker compose up -d --build</code></pre>
   .code-block {
     background: var(--bg2); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 1rem 1.25rem;
-    font-family: var(--font-mono); font-size: 0.9rem;
-    color: var(--green); overflow-x: auto; margin: 0.75rem 0;
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
+    color: var(--accent-ink); overflow-x: auto; margin: 0.75rem 0;
+    white-space: pre-wrap; word-break: break-all;
   }
   .code-block.output { color: var(--text-muted); }
 
@@ -245,9 +252,10 @@ docker compose up -d --build</code></pre>
   .req-list li { margin-bottom: 0.5rem; line-height: 1.65; }
   .req-list strong { color: var(--text); }
   code {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono); font-weight: 500;
     background: var(--bg2); border: 1px solid var(--border);
     padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.875rem;
+    color: var(--accent-ink);
   }
 
   .faq {
@@ -267,12 +275,12 @@ docker compose up -d --build</code></pre>
   }
   .cta-block p { color: var(--text-muted); margin-bottom: 1rem; }
   .btn-primary {
-    background: var(--accent); color: #fff;
+    background: var(--accent); color: #0b0b0c;
     padding: 0.75rem 1.75rem; border-radius: var(--radius);
-    font-weight: 700; font-size: 1rem; display: inline-block;
-    transition: opacity 0.15s;
+    font-weight: 600; font-size: 0.95rem; display: inline-block;
+    transition: background 0.15s;
   }
-  .btn-primary:hover { opacity: 0.88; text-decoration: none; }
+  .btn-primary:hover { background: #ff7049; text-decoration: none; }
 
   .footer { border-top: 1px solid var(--border); padding: 2rem 0; background: var(--bg2); }
   .footer-inner {

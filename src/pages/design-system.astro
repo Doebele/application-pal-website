@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -24,22 +25,22 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="ds-group-title">Backgrounds</h3>
           <div class="swatch-row">
             <div class="swatch-item">
-              <div class="swatch" style="background:#fff4e4; border:1px solid rgba(10,62,66,.2)"></div>
+              <div class="swatch" style="background:#0b0b0c; border:1px solid #f5f3ee24"></div>
               <code class="swatch-var">--bg</code>
-              <span class="swatch-val">#fff4e4</span>
-              <span class="swatch-desc">Page background (warm cream)</span>
+              <span class="swatch-val">#0b0b0c</span>
+              <span class="swatch-desc">Page background (ink)</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:#fef8ee; border:1px solid rgba(10,62,66,.2)"></div>
+              <div class="swatch" style="background:#1a1a1d; border:1px solid #f5f3ee24"></div>
               <code class="swatch-var">--bg2</code>
-              <span class="swatch-val">#fef8ee</span>
-              <span class="swatch-desc">Section alternate background</span>
+              <span class="swatch-val">#1a1a1d</span>
+              <span class="swatch-desc">Soft dark surface (ink-soft)</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:#ffffff; border:1px solid rgba(10,62,66,.14)"></div>
+              <div class="swatch" style="background:#111113; border:1px solid #f5f3ee24"></div>
               <code class="swatch-var">--bg3</code>
-              <span class="swatch-val">#ffffff</span>
-              <span class="swatch-desc">Cards, panels, nav</span>
+              <span class="swatch-val">#111113</span>
+              <span class="swatch-desc">Cards, panels, terminal</span>
             </div>
           </div>
         </div>
@@ -48,15 +49,15 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="ds-group-title">Text</h3>
           <div class="swatch-row">
             <div class="swatch-item">
-              <div class="swatch" style="background:#212121"></div>
+              <div class="swatch" style="background:#f5f3ee"></div>
               <code class="swatch-var">--text</code>
-              <span class="swatch-val">#212121</span>
-              <span class="swatch-desc">Primary text</span>
+              <span class="swatch-val">#f5f3ee</span>
+              <span class="swatch-desc">Primary text (paper)</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:#6b7f80"></div>
+              <div class="swatch" style="background:#8a8780"></div>
               <code class="swatch-var">--text-muted</code>
-              <span class="swatch-val">#6b7f80</span>
+              <span class="swatch-val">#8a8780</span>
               <span class="swatch-desc">Secondary / muted text</span>
             </div>
           </div>
@@ -66,39 +67,39 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="ds-group-title">Brand Accents</h3>
           <div class="swatch-row">
             <div class="swatch-item">
-              <div class="swatch" style="background:#0a3e42"></div>
+              <div class="swatch" style="background:#ff5b2e"></div>
               <code class="swatch-var">--accent</code>
-              <span class="swatch-val">#0a3e42</span>
-              <span class="swatch-desc">Primary accent (dark teal)</span>
+              <span class="swatch-val">#ff5b2e</span>
+              <span class="swatch-desc">Primary accent (orange)</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:rgba(10,62,66,0.12); border:1px solid rgba(10,62,66,.2)"></div>
-              <code class="swatch-var">--accent-glow</code>
-              <span class="swatch-val">rgba(10,62,66,.12)</span>
-              <span class="swatch-desc">Accent tint / glow</span>
+              <div class="swatch" style="background:#f5f3ee24"></div>
+              <code class="swatch-var">--border</code>
+              <span class="swatch-val">#f5f3ee24</span>
+              <span class="swatch-desc">Hairline border (paper 14%)</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:#dc143c"></div>
-              <code class="swatch-var">--purple</code>
-              <span class="swatch-val">#dc143c</span>
-              <span class="swatch-desc">Secondary accent (crimson)</span>
+              <div class="swatch" style="background:#b93107"></div>
+              <code class="swatch-var">--accent-text</code>
+              <span class="swatch-val">#b93107</span>
+              <span class="swatch-desc">Accent on light surfaces</span>
             </div>
             <div class="swatch-item">
-              <div class="swatch" style="background:#1a7045"></div>
-              <code class="swatch-var">--green</code>
-              <span class="swatch-val">#1a7045</span>
-              <span class="swatch-desc">Success / open-source badge</span>
+              <div class="swatch" style="background:#8a8780"></div>
+              <code class="swatch-var">--muted</code>
+              <span class="swatch-val">#8a8780</span>
+              <span class="swatch-desc">Muted (alias of --text-muted)</span>
             </div>
           </div>
         </div>
 
         <div class="ds-group">
-          <h3 class="ds-group-title">Gradient</h3>
+          <h3 class="ds-group-title">Accent</h3>
           <div class="swatch-row">
             <div class="swatch-item" style="min-width:260px">
-              <div class="swatch swatch-wide" style="background:linear-gradient(135deg,#0a3e42,#dc143c)"></div>
+              <div class="swatch swatch-wide" style="background:#ff5b2e"></div>
               <code class="swatch-var">--grad</code>
-              <span class="swatch-val">linear-gradient(135deg, #0a3e42, #dc143c)</span>
+              <span class="swatch-val">#ff5b2e — flat accent, no gradients</span>
               <span class="swatch-desc">CTA buttons, headings, stat numbers</span>
             </div>
           </div>
@@ -127,18 +128,18 @@ import Layout from '../layouts/Layout.astro';
             <div class="font-family-card">
               <div class="font-role">UI / Body</div>
               <code class="font-var">--font</code>
-              <div class="font-specimen" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+              <div class="font-specimen" style="font-family: 'Inter', sans-serif">
                 The quick brown fox jumps over the lazy dog.
               </div>
-              <div class="font-stack">-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif</div>
+              <div class="font-stack">"Inter" (self-hosted via Fontsource), ui-sans-serif, system-ui, -apple-system, sans-serif</div>
             </div>
             <div class="font-family-card">
               <div class="font-role">Monospace / Code</div>
               <code class="font-var">--font-mono</code>
-              <div class="font-specimen" style="font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size:1.1rem">
+              <div class="font-specimen" style="font-family: 'Fira Code', monospace; font-size:1.1rem">
                 docker compose up -d &amp;&amp; open http://localhost:8070
               </div>
-              <div class="font-stack">"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace</div>
+              <div class="font-stack">"Fira Code" (self-hosted via Fontsource), ui-monospace, "SFMono-Regular", Menlo, monospace</div>
             </div>
           </div>
         </div>
@@ -202,7 +203,7 @@ import Layout from '../layouts/Layout.astro';
                   <td><code>0.95rem</code></td>
                   <td>700</td>
                   <td>Footer brand</td>
-                  <td><span style="font-size:0.95rem;font-weight:700">📎 application-pal</span></td>
+                  <td><span style="font-size:0.95rem;font-weight:700;display:inline-flex;align-items:center;gap:0.4rem"><Icon name="attachment" size={16} style="color:#ff5b2e" /> application-pal</span></td>
                 </tr>
                 <tr>
                   <td><code>0.9rem</code></td>
@@ -345,15 +346,15 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="ds-group-title">Cards</h3>
           <div class="component-row">
             <div class="feature-card-sample">
-              <div class="feature-icon-sample" style="background:linear-gradient(135deg,#0a3e42,#dc143c)">🤖</div>
+              <div class="feature-icon-sample" style="background:#111113;border:1px solid #f5f3ee24"><Icon name="brain" size={24} style="color:#ff5b2e" /></div>
               <div class="feature-title-sample">AI Coaching</div>
               <div class="feature-desc-sample">Stage-specific guidance — not generic tips. Checks ATS keyword gaps and generates interview prep guides.</div>
             </div>
             <div class="step-card-sample">
               <div class="step-num-sample">01</div>
-              <div class="feature-title-sample">Run one command</div>
-              <div class="feature-desc-sample">docker compose up — the full stack starts in under a minute.</div>
-              <code class="step-code-sample">docker compose up -d</code>
+              <div class="feature-title-sample">Download &amp; start</div>
+              <div class="feature-desc-sample">Fetch the compose file, set a password in .env, and start the stack — ready in about a minute.</div>
+              <code class="step-code-sample">docker compose -f docker-compose.release.yml up -d</code>
             </div>
           </div>
         </div>
@@ -418,7 +419,7 @@ import Layout from '../layouts/Layout.astro';
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    background: var(--grad, linear-gradient(135deg, #0a3e42, #dc143c));
+    background: #ff5b2e;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -432,7 +433,7 @@ import Layout from '../layouts/Layout.astro';
   .ds-sub code {
     font-family: var(--font-mono);
     font-size: 0.9em;
-    background: rgba(10,62,66,0.1);
+    background: var(--bg2);
     border: 1px solid rgba(10,62,66,0.18);
     padding: 0.1rem 0.4rem;
     border-radius: 5px;
@@ -498,7 +499,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--accent);
-    background: rgba(10,62,66,0.08);
+    background: var(--bg3);
     border: 1px solid rgba(10,62,66,0.15);
     padding: 0.15rem 0.4rem;
     border-radius: 5px;
@@ -540,7 +541,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono);
     font-size: 0.82rem;
     color: var(--accent);
-    background: rgba(10,62,66,0.08);
+    background: var(--bg3);
     border: 1px solid rgba(10,62,66,0.15);
     padding: 0.15rem 0.5rem;
     border-radius: 5px;
@@ -597,7 +598,7 @@ import Layout from '../layouts/Layout.astro';
   .ds-table code {
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    background: rgba(10,62,66,0.08);
+    background: var(--bg3);
     border: 1px solid rgba(10,62,66,0.14);
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
@@ -631,8 +632,8 @@ import Layout from '../layouts/Layout.astro';
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg,#0a3e42,#dc143c);
-    color: #fff !important;
+    background: #ff5b2e;
+    color: #0b0b0c !important;
     padding: 0.75rem 1.75rem;
     border-radius: var(--radius);
     font-weight: 700;
@@ -655,8 +656,8 @@ import Layout from '../layouts/Layout.astro';
   }
   .btn-nav-cta-sample {
     display: inline-flex;
-    background: linear-gradient(135deg,#0a3e42,#dc143c);
-    color: #fff !important;
+    background: #ff5b2e;
+    color: #0b0b0c !important;
     padding: 0.42rem 1.1rem;
     border-radius: 8px;
     font-weight: 600;
@@ -668,7 +669,7 @@ import Layout from '../layouts/Layout.astro';
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(10,62,66,0.08);
+    background: var(--bg3);
     border: 1px solid rgba(10,62,66,0.18);
     border-radius: 100px;
     padding: 0.35rem 1rem;
@@ -730,7 +731,7 @@ import Layout from '../layouts/Layout.astro';
     font-size: 2rem;
     font-weight: 800;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg,#0a3e42,#dc143c);
+    background: #ff5b2e;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

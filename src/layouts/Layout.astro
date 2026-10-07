@@ -1,4 +1,14 @@
 ---
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource/fira-code/400.css';
+import '@fontsource/fira-code/500.css';
+
 export interface Props {
   title?: string;
   description?: string;
@@ -7,7 +17,7 @@ export interface Props {
 
 const {
   title = 'application-pal — Local-first job application tracker with AI coaching',
-  description = 'Track job applications with a Kanban board, get AI coaching on your cover letters, and keep your data local. Free and open source.',
+  description = 'Track job applications on a Kanban board, table, and timeline. AI cover-letter coaching, interview prep, and RAV/ORP proof-of-search export — all self-hosted on your machine. Free and open source.',
   ogImage = '/application-pal-website/og-image.png',
 } = Astro.props;
 
@@ -36,26 +46,55 @@ const canonicalUrl = Astro.url.href;
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/application-pal-website/favicon.svg" />
 
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
+
     <!-- analytics -->
 
     <style is:global>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --bg: #fff4e4;
-        --bg2: #fef8ee;
-        --bg3: #ffffff;
-        --border: rgba(10,62,66,0.14);
-        --text: #212121;
-        --text-muted: #6b7f80;
-        --accent: #0a3e42;
-        --accent-glow: rgba(10, 62, 66, 0.12);
-        --green: #1a7045;
-        --purple: #dc143c;
-        --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-        --radius: 10px;
+        /* medvesek.com design system — ink / paper / accent */
+        --bg: #0b0b0c;
+        --bg2: #1a1a1d;
+        --bg3: #111113;
+        --border: #f5f3ee24;
+        --text: #f5f3ee;
+        --text-muted: #8a8780;
+        --accent: #ff5b2e;
+        --accent-ink: #ff5b2e;
+        --nav-bg: rgba(11, 11, 12, 0.85);
+        --green: #8a8780;
+        --purple: #ff5b2e;
+        --font: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+        --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+        --font-mono: 'Fira Code', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+        --radius: 6px;
         --max-width: 1100px;
+        color-scheme: dark;
+      }
+
+      html[data-theme='light'] {
+        --bg: #f5f3ee;
+        --bg2: #e9e6dd;
+        --bg3: #faf9f5;
+        --border: #0b0b0c1f;
+        --text: #0b0b0c;
+        --text-muted: #75726b;
+        --accent: #ff5b2e;
+        --accent-ink: #b93107;
+        --nav-bg: rgba(245, 243, 238, 0.88);
+        color-scheme: light;
       }
 
       html { scroll-behavior: smooth; }
@@ -66,10 +105,19 @@ const canonicalUrl = Astro.url.href;
         color: var(--text);
         line-height: 1.6;
         font-size: 16px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        -webkit-font-smoothing: antialiased;
       }
 
-      a { color: var(--accent); text-decoration: none; }
+      ::selection { background: var(--accent); color: var(--bg); }
+
+      a { color: var(--accent-ink); text-decoration: none; }
       a:hover { text-decoration: underline; }
+
+      /* kill the user-agent default (`code { font-family: monospace }`)
+         that overrides Fira Code on inline code elements */
+      code, kbd, samp, pre, .mono { font-family: var(--font-mono); }
 
       .container {
         max-width: var(--max-width);

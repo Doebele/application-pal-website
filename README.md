@@ -121,12 +121,12 @@ See `verification-report.json` for detailed results.
 - Semantic HTML and meta tags verified
 - GitHub repository with full commit history
 
-**Non-blocking placeholders**:
-- OG image (50-byte placeholder, needs 1200×630 PNG)
-- Testimonial (placeholder text in social proof section)
-
-See [TASK_COMPLETION_REPORT.md](./TASK_COMPLETION_REPORT.md) for full details.
+**Content sync** (October 2026):
+- Screenshots byte-identical with `docs/screenshots/` in the [application-pal repository](https://github.com/Doebele/application-pal)
+- New screenshots: `timeline.png`, `rav-dialog.png`, `letter-coach.png` (captured from an isolated demo instance)
+- Install guide reflects the current `docker-compose.release.yml` workflow
+- Real OG image (1200×630) replaces the former 50-byte placeholder
 
 ## License
 
-Open source - see application-pal repository for details.
+MIT License — © 2026 Claus Medvesek. The full license text lives with the application: [application-pal/LICENSE](https://github.com/Doebele/application-pal/blob/main/LICENSE). This marketing site is published under the same terms.
