@@ -100,46 +100,15 @@ cp .env.example .env</code></pre>
         </p>
       </section>
 
-      <!-- AI COACHING (OPTIONAL) -->
+      <!-- STOPPING -->
       <section class="step-section">
-        <h2><span class="step-badge">5</span> (Optional) Enable AI features</h2>
-        <p>
-          Six providers are supported — configured under <strong>Settings → AI Integration</strong>
-          in the app, no config files needed. Without any provider the app runs as a pure
-          management tool.
-        </p>
-        <ul class="req-list">
-          <li>
-            <strong>LM Studio / Ollama (local, free)</strong> — install
-            <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> or
-            <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and load a model
-            (Qwen3 8B or better, e.g. <code>ollama pull qwen3:8b</code>).
-          </li>
-          <li>
-            <strong>Cloud providers</strong> — Anthropic, OpenAI, Google Gemini (free tier),
-            or OpenRouter with your own API key.
-          </li>
-        </ul>
-        <p>Detailed configuration options are in the project <a href={`${GITHUB_URL}#readme`} target="_blank" rel="noopener">README</a> and <a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">docs/ai-setup.md</a>.</p>
-      </section>
+        <h2>Stopping &amp; updating</h2>
+        <pre class="code-block"><code># Stop containers (data is preserved)
+docker compose -f docker-compose.release.yml down
 
-      <!-- GOOGLE DRIVE (OPTIONAL) -->
-      <section class="step-section">
-        <h2><span class="step-badge">6</span> (Optional) Connect Google Drive &amp; Sign-In</h2>
-        <p>
-          With Google connected, application-pal automatically creates a Drive folder per job the
-          moment you add it, copies your CV and cover-letter templates with formatting intact, and
-          exports AI-generated content as formatted Google Docs. Google Sign-In also becomes
-          available as a login method next to e-mail and passkeys.
-        </p>
-        <p>
-          Setup runs entirely through a Google Cloud OAuth client — no server-side Google account
-          needed. The step-by-step guide (Cloud Console, consent screen, OAuth client, five
-          <code>.env</code> keys, container restart) takes about ten minutes:
-        </p>
-        <p class="note">
-          → Full guide: <a href={`${GITHUB_URL}/blob/main/docs/google-setup.md`} target="_blank" rel="noopener">docs/google-setup.md</a>
-        </p>
+# Update to the latest release
+docker compose -f docker-compose.release.yml pull
+docker compose -f docker-compose.release.yml up -d</code></pre>
       </section>
 
       <!-- OPTIONAL FEATURES OVERVIEW -->
@@ -151,12 +120,14 @@ cp .env.example .env</code></pre>
         </p>
         <ul class="req-list">
           <li>
-            <strong><a href={`${GITHUB_URL}/blob/main/docs/google-setup.md`} target="_blank" rel="noopener">Google Drive &amp; Sign-In</a></strong> —
-            per-application folders, template copies, Google Doc export (see step 6 above)
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">AI integration</a></strong> —
+            LM Studio / Ollama locally, or Anthropic, OpenAI, Google Gemini, and OpenRouter via API key —
+            configured in the app under <strong>Settings → AI Integration</strong>, no config files needed
           </li>
           <li>
-            <strong><a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">AI integration</a></strong> —
-            LM Studio / Ollama locally, or Anthropic, OpenAI, Google Gemini, and OpenRouter via API key
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/google-setup.md`} target="_blank" rel="noopener">Google Drive &amp; Sign-In</a></strong> —
+            per-application folders, template copies with formatting intact, Google Doc export,
+            and Google Sign-In as a login method
           </li>
           <li>
             <strong><a href={`${GITHUB_URL}/blob/main/docs/cover-letter.md`} target="_blank" rel="noopener">Cover Letter Coach</a></strong> —
@@ -177,16 +148,6 @@ cp .env.example .env</code></pre>
         </p>
       </section>
 
-      <!-- STOPPING -->
-      <section class="step-section">
-        <h2>Stopping &amp; updating</h2>
-        <pre class="code-block"><code># Stop containers (data is preserved)
-docker compose -f docker-compose.release.yml down
-
-# Update to the latest release
-docker compose -f docker-compose.release.yml pull
-docker compose -f docker-compose.release.yml up -d</code></pre>
-      </section>
 
       <!-- TROUBLESHOOTING -->
       <section class="step-section">
