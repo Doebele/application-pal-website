@@ -123,6 +123,60 @@ cp .env.example .env</code></pre>
         <p>Detailed configuration options are in the project <a href={`${GITHUB_URL}#readme`} target="_blank" rel="noopener">README</a> and <a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">docs/ai-setup.md</a>.</p>
       </section>
 
+      <!-- GOOGLE DRIVE (OPTIONAL) -->
+      <section class="step-section">
+        <h2><span class="step-badge">6</span> (Optional) Connect Google Drive &amp; Sign-In</h2>
+        <p>
+          With Google connected, application-pal automatically creates a Drive folder per job the
+          moment you add it, copies your CV and cover-letter templates with formatting intact, and
+          exports AI-generated content as formatted Google Docs. Google Sign-In also becomes
+          available as a login method next to e-mail and passkeys.
+        </p>
+        <p>
+          Setup runs entirely through a Google Cloud OAuth client — no server-side Google account
+          needed. The step-by-step guide (Cloud Console, consent screen, OAuth client, five
+          <code>.env</code> keys, container restart) takes about ten minutes:
+        </p>
+        <p class="note">
+          → Full guide: <a href={`${GITHUB_URL}/blob/main/docs/google-setup.md`} target="_blank" rel="noopener">docs/google-setup.md</a>
+        </p>
+      </section>
+
+      <!-- OPTIONAL FEATURES OVERVIEW -->
+      <section class="step-section">
+        <h2>Optional features</h2>
+        <p>
+          Everything below is optional — without any of it, the app runs as a pure management tool.
+          The guides live with the application repository:
+        </p>
+        <ul class="req-list">
+          <li>
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/google-setup.md`} target="_blank" rel="noopener">Google Drive &amp; Sign-In</a></strong> —
+            per-application folders, template copies, Google Doc export (see step 6 above)
+          </li>
+          <li>
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/ai-setup.md`} target="_blank" rel="noopener">AI integration</a></strong> —
+            LM Studio / Ollama locally, or Anthropic, OpenAI, Google Gemini, and OpenRouter via API key
+          </li>
+          <li>
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/cover-letter.md`} target="_blank" rel="noopener">Cover Letter Coach</a></strong> —
+            personal guidance the AI applies to every generated letter
+          </li>
+          <li>
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/rav-export.md`} target="_blank" rel="noopener">RAV / ORP export</a></strong> —
+            proof-of-job-search reports as Google Sheets or CSV
+          </li>
+          <li>
+            <strong><a href={`${GITHUB_URL}/blob/main/docs/backup.md`} target="_blank" rel="noopener">Data backup &amp; migration</a></strong> —
+            securing and moving your PostgreSQL data
+          </li>
+        </ul>
+        <p>
+          The overview in the application repository lives at
+          <a href={`${GITHUB_URL}#optional-features`} target="_blank" rel="noopener">application-pal → Optional features</a>.
+        </p>
+      </section>
+
       <!-- STOPPING -->
       <section class="step-section">
         <h2>Stopping &amp; updating</h2>

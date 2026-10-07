@@ -55,6 +55,12 @@ const features = [
     title: 'Flexible AI',
     desc: 'Six AI providers supported: Ollama and LM Studio run fully offline on your hardware. Anthropic, OpenAI, Google Gemini, and OpenRouter connect via your own API key — configured in the UI, not in config files.',
   },
+  {
+    icon: 'user',
+    grad: 'linear-gradient(135deg,#0a3e42,#1a7045)',
+    title: 'Persona Profiles',
+    desc: 'Declare your context — school leaver, career starter, or career changer — and the app adapts to your use case: AI tone, prompts, and recommendations adjust to where you are, with your Master CV, LinkedIn bio, and notes feeding every analysis.',
+  },
 ];
 
 const stats = [
@@ -216,6 +222,7 @@ const steps = [
         <input type="radio" name="tab" id="tab-drive" />
         <input type="radio" name="tab" id="tab-multiuser" />
         <input type="radio" name="tab" id="tab-flexai" />
+        <input type="radio" name="tab" id="tab-persona" />
 
         <div class="tab-labels">
           <label for="tab-kanban"><Icon name="kanban-board" size={15} /> Kanban Board</label>
@@ -227,6 +234,7 @@ const steps = [
           <label for="tab-drive"><Icon name="folder" size={15} /> Google Drive</label>
           <label for="tab-multiuser"><Icon name="group" size={15} /> Multi-user</label>
           <label for="tab-flexai"><Icon name="home" size={15} /> Flexible AI</label>
+          <label for="tab-persona"><Icon name="user" size={15} /> Persona</label>
         </div>
 
         <div class="browser-frame">
@@ -427,6 +435,14 @@ const steps = [
                 <text x="156" y="452" fill="#0a3e42" font-size="11" text-anchor="middle" font-family="monospace">+ Invite new user</text>
               </svg>
               <span class="ph-label">Multi-user — add screenshots/multi-user.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-persona">
+            <img src="/application-pal-website/screenshots/persona.png" alt="Persona selection — school leaver, career starter, or career changer" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" onerror="this.style.display='none'" />
+            <img src="/application-pal-website/screenshots/persona-light.png" alt="Persona selection — school leaver, career starter, or career changer" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-persona').style.display='flex'" />
+            <div id="ph-persona" class="screenshot-ph">
+              <span class="ph-label">Persona — add screenshots/persona.png to show real UI</span>
             </div>
           </div>
 
@@ -837,6 +853,7 @@ docker compose -f docker-compose.release.yml up -d</code></pre>
   #tab-rav:checked ~ .tab-labels label[for="tab-rav"],
   #tab-drive:checked ~ .tab-labels label[for="tab-drive"],
   #tab-multiuser:checked ~ .tab-labels label[for="tab-multiuser"],
+  #tab-persona:checked ~ .tab-labels label[for="tab-persona"],
   #tab-flexai:checked ~ .tab-labels label[for="tab-flexai"] {
     background: var(--text); border-color: var(--text); color: var(--bg);
   }
@@ -867,7 +884,8 @@ docker compose -f docker-compose.release.yml up -d</code></pre>
   #tab-rav:checked ~ .browser-frame #panel-rav,
   #tab-drive:checked ~ .browser-frame #panel-drive,
   #tab-multiuser:checked ~ .browser-frame #panel-multiuser,
-  #tab-flexai:checked ~ .browser-frame #panel-flexai { display: block; }
+  #tab-flexai:checked ~ .browser-frame #panel-flexai,
+  #tab-persona:checked ~ .browser-frame #panel-persona { display: block; }
   .screenshot-img { width: 100%; height: auto; display: block; }
   /* Invert app screenshots against the site theme for stronger contrast:
      dark site shows light-mode app shots, light site shows dark-mode shots */
