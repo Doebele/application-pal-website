@@ -17,7 +17,7 @@ const features = [
     icon: 'kanban-board',
     grad: 'linear-gradient(135deg,#0a3e42,#006b73)',
     title: 'Kanban + table view',
-    desc: 'Drag applications from Inbox → CV → Cover Letter → Sent → Interview. Switch to the table view for a spreadsheet-style overview with 15 configurable columns — resize, reorder, pin — including AI match score and salary data.',
+    desc: 'Drag applications from Inbox → CV → Cover Letter → Sent → Interview. Switch to the table view for a spreadsheet-style overview with 15 configurable columns — resize, reorder, pin — including AI match score and salary data. Rejected applications archive in one click — and restore just as easily.',
   },
   {
     icon: 'edit-pencil',
@@ -60,6 +60,18 @@ const features = [
     grad: 'linear-gradient(135deg,#0a3e42,#1a7045)',
     title: 'Persona profiles',
     desc: 'Declare your context — school leaver, career starter, or career changer — and the app adapts to your use case: AI tone, prompts, and recommendations adjust to where you are, with your Master CV, LinkedIn bio, and notes feeding every analysis.',
+  },
+  {
+    icon: 'doc-magnifying-glass',
+    grad: 'linear-gradient(135deg,#006b73,#0a3e42)',
+    title: 'CV check',
+    desc: 'Scores your CV VMock-style — Impact 40 · Presentation 20 · Competencies 40, plus 10 bonus points — toward a target of 80+. Layout is checked straight from the PDF, every bullet gets two AI rewrites without invented numbers, and points you keep on purpose count as accepted.',
+  },
+  {
+    icon: 'linkedin',
+    grad: 'linear-gradient(135deg,#1a7045,#0a3e42)',
+    title: 'LinkedIn check',
+    desc: 'Scores your LinkedIn profile out of 100 — per language, DE / EN / FR. Import via API, ZIP export, PDF, or pasted text; get positioning options, a full profile draft, translations, and a checklist. Runs on your local AI — nothing is ever written to LinkedIn.',
   },
 ];
 
@@ -223,6 +235,8 @@ const steps = [
         <input type="radio" name="tab" id="tab-multiuser" />
         <input type="radio" name="tab" id="tab-flexai" />
         <input type="radio" name="tab" id="tab-persona" />
+        <input type="radio" name="tab" id="tab-cvcheck" />
+        <input type="radio" name="tab" id="tab-licheck" />
 
         <div class="tab-labels">
           <label for="tab-kanban"><Icon name="kanban-board" size={15} /> Kanban board</label>
@@ -235,6 +249,8 @@ const steps = [
           <label for="tab-multiuser"><Icon name="group" size={15} /> Multi-user</label>
           <label for="tab-flexai"><Icon name="home" size={15} /> Flexible AI</label>
           <label for="tab-persona"><Icon name="user" size={15} /> Persona</label>
+          <label for="tab-cvcheck"><Icon name="doc-magnifying-glass" size={15} /> CV check</label>
+          <label for="tab-licheck"><Icon name="linkedin" size={15} /> LinkedIn check</label>
         </div>
 
         <div class="browser-frame">
@@ -443,6 +459,22 @@ const steps = [
             <img src="/application-pal-website/screenshots/persona-light.png" alt="Persona selection — school leaver, career starter, or career changer" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-persona').style.display='flex'" />
             <div id="ph-persona" class="screenshot-ph">
               <span class="ph-label">Persona — add screenshots/persona.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-cvcheck">
+            <img src="/application-pal-website/screenshots/cv-check.png" alt="CV check — VMock-style scoring with criteria and point gains" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" onerror="this.style.display='none'" />
+            <img src="/application-pal-website/screenshots/cv-check-light.png" alt="CV check — VMock-style scoring with criteria and point gains" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-cvcheck').style.display='flex'" />
+            <div id="ph-cvcheck" class="screenshot-ph">
+              <span class="ph-label">CV check — add screenshots/cv-check.png to show real UI</span>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-licheck">
+            <img src="/application-pal-website/screenshots/linkedin-check.png" alt="LinkedIn check — profile score per language with levers and point gains" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" onerror="this.style.display='none'" />
+            <img src="/application-pal-website/screenshots/linkedin-check-light.png" alt="LinkedIn check — profile score per language with levers and point gains" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" onerror="this.style.display='none';document.getElementById('ph-licheck').style.display='flex'" />
+            <div id="ph-licheck" class="screenshot-ph">
+              <span class="ph-label">LinkedIn check — add screenshots/linkedin-check.png to show real UI</span>
             </div>
           </div>
 
@@ -852,6 +884,8 @@ docker compose -f docker-compose.release.yml up -d</code></pre>
   #tab-rav:checked ~ .tab-labels label[for="tab-rav"],
   #tab-drive:checked ~ .tab-labels label[for="tab-drive"],
   #tab-multiuser:checked ~ .tab-labels label[for="tab-multiuser"],
+  #tab-cvcheck:checked ~ .tab-labels label[for="tab-cvcheck"],
+  #tab-licheck:checked ~ .tab-labels label[for="tab-licheck"],
   #tab-persona:checked ~ .tab-labels label[for="tab-persona"],
   #tab-flexai:checked ~ .tab-labels label[for="tab-flexai"] {
     background: var(--text); border-color: var(--text); color: var(--bg);
@@ -884,7 +918,9 @@ docker compose -f docker-compose.release.yml up -d</code></pre>
   #tab-drive:checked ~ .browser-frame #panel-drive,
   #tab-multiuser:checked ~ .browser-frame #panel-multiuser,
   #tab-flexai:checked ~ .browser-frame #panel-flexai,
-  #tab-persona:checked ~ .browser-frame #panel-persona { display: block; }
+  #tab-persona:checked ~ .browser-frame #panel-persona,
+  #tab-cvcheck:checked ~ .browser-frame #panel-cvcheck,
+  #tab-licheck:checked ~ .browser-frame #panel-licheck { display: block; }
   .screenshot-img { width: 100%; height: auto; display: block; }
   /* Invert app screenshots against the site theme for stronger contrast:
      dark site shows light-mode app shots, light site shows dark-mode shots */
