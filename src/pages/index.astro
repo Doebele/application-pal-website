@@ -563,30 +563,78 @@ const steps = [
 
       <div class="help-shots">
         <figure class="help-shot" data-reveal>
-          <div class="browser-frame">
-            <div class="browser-chrome">
-              <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
-              <span class="address-bar">localhost:8070 · Help &amp; overview</span>
+          <button class="help-shot-btn" type="button" data-zoom aria-label="Enlarge: in-app overview">
+            <div class="browser-frame">
+              <div class="browser-chrome">
+                <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
+                <span class="address-bar">localhost:8070 · Help &amp; overview</span>
+              </div>
+              <img src="/application-pal-website/screenshots/help-overview.png" alt="In-app overview: what can Apply-Pal do?" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" />
+              <img src="/application-pal-website/screenshots/help-overview-light.png" alt="In-app overview: what can Apply-Pal do?" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" />
             </div>
-            <img src="/application-pal-website/screenshots/help-overview.png" alt="In-app overview: what can Apply-Pal do?" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" />
-            <img src="/application-pal-website/screenshots/help-overview-light.png" alt="In-app overview: what can Apply-Pal do?" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" />
-          </div>
-          <figcaption class="shot-caption">Help &amp; overview — the whole flow, one dialog</figcaption>
+          </button>
+          <figcaption class="shot-caption">
+            <span>Help &amp; overview — the whole flow, one dialog</span>
+            <span class="zoom-hint"><Icon name="search" size={13} /> Click to enlarge</span>
+          </figcaption>
         </figure>
         <figure class="help-shot" data-reveal>
-          <div class="browser-frame">
-            <div class="browser-chrome">
-              <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
-              <span class="address-bar">localhost:8070 · Board tour</span>
+          <button class="help-shot-btn" type="button" data-zoom aria-label="Enlarge: board tour">
+            <div class="browser-frame">
+              <div class="browser-chrome">
+                <span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span>
+                <span class="address-bar">localhost:8070 · Board tour</span>
+              </div>
+              <img src="/application-pal-website/screenshots/help-tour.png" alt="Board tour with spotlight on an open application" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" />
+              <img src="/application-pal-website/screenshots/help-tour-light.png" alt="Board tour with spotlight on an open application" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" />
             </div>
-            <img src="/application-pal-website/screenshots/help-tour.png" alt="Board tour with spotlight on an open application" class="screenshot-img shot-dark" width="1480" height="820" loading="lazy" />
-            <img src="/application-pal-website/screenshots/help-tour-light.png" alt="Board tour with spotlight on an open application" class="screenshot-img shot-light" width="1480" height="820" loading="lazy" />
-          </div>
-          <figcaption class="shot-caption">Board tour — spotlight on an open application</figcaption>
+          </button>
+          <figcaption class="shot-caption">
+            <span>Board tour — spotlight on an open application</span>
+            <span class="zoom-hint"><Icon name="search" size={13} /> Click to enlarge</span>
+          </figcaption>
         </figure>
       </div>
     </div>
+
+    <!-- Zoom lightbox: shows the theme-appropriate screenshot at full size -->
+    <div class="help-lightbox" id="help-lightbox" hidden>
+      <div class="help-lightbox-inner">
+        <button class="help-lightbox-close" type="button" aria-label="Close enlarged screenshot">✕</button>
+        <img class="help-lightbox-img" src="" alt="" />
+        <p class="help-lightbox-caption"></p>
+      </div>
+    </div>
   </section>
+
+  <script>
+    (function () {
+      const box = document.getElementById('help-lightbox');
+      if (!box) return;
+      const img = box.querySelector('.help-lightbox-img');
+      const cap = box.querySelector('.help-lightbox-caption');
+      let lastFocus = null;
+      const open = (btn) => {
+        const visible = [...btn.querySelectorAll('img.screenshot-img')].find(i => getComputedStyle(i).display !== 'none');
+        if (!visible) return;
+        img.src = visible.src;
+        img.alt = visible.alt;
+        cap.textContent = btn.closest('.help-shot')?.querySelector('.shot-caption span')?.textContent ?? '';
+        lastFocus = btn;
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        box.querySelector('.help-lightbox-close').focus();
+      };
+      const close = () => {
+        box.hidden = true;
+        document.body.style.overflow = '';
+        lastFocus?.focus();
+      };
+      document.querySelectorAll('[data-zoom]').forEach(btn => btn.addEventListener('click', () => open(btn)));
+      box.addEventListener('click', (e) => { if (e.target === box || e.target.closest('.help-lightbox-close')) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !box.hidden) close(); });
+    })();
+  </script>
 
   <!-- HOW IT WORKS -->
   <section class="section how" id="how-it-works">
@@ -1122,16 +1170,59 @@ docker compose -f docker-compose.release.yml up -d</code></pre>
 
   /* ── IN-APP HELP ──────────────────────────────────────────── */
   .help { background: var(--bg3); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  /* Full-width shots — stacked, each readable on its own */
   .help-shots {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
-    gap: 1.5rem; margin-top: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem; margin-top: 2.5rem;
   }
   .help-shot { margin: 0; }
-  .shot-caption {
-    font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
-    text-align: center; padding: 0.6rem; background: var(--bg2);
+  .help-shot-btn {
+    display: block; width: 100%; padding: 0;
+    background: none; border: none; cursor: zoom-in;
+    font: inherit; text-align: inherit; color: inherit;
+    border-radius: var(--r); transition: filter 0.15s;
   }
+  .help-shot-btn:hover .browser-frame { border-color: var(--accent); }
+  .help-shot-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .shot-caption {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+    padding: 0.6rem; background: var(--bg2);
+  }
+  .zoom-hint { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent-ink); white-space: nowrap; }
+
+  /* ── Lightbox ─────────────────────────────────────────────── */
+  .help-lightbox {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 2.5rem 1.5rem;
+    cursor: zoom-out;
+  }
+  .help-lightbox[hidden] { display: none; }
+  .help-lightbox-inner {
+    position: relative; max-width: min(1480px, 100%); max-height: 100%;
+    display: flex; flex-direction: column; cursor: default;
+  }
+  .help-lightbox-img {
+    display: block; width: 100%; height: auto;
+    max-height: calc(100vh - 8rem); object-fit: contain;
+    border: 1px solid var(--line); border-radius: var(--r);
+  }
+  .help-lightbox-caption {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted);
+    text-align: center; padding: 0.7rem 0 0;
+  }
+  .help-lightbox-close {
+    position: absolute; top: -1.15rem; right: -1.15rem;
+    width: 2.3rem; height: 2.3rem; border-radius: 50%;
+    background: var(--accent); color: #0b0b0c;
+    border: none; font-size: 1rem; font-weight: 700; line-height: 1;
+    cursor: pointer;
+  }
+  .help-lightbox-close:hover { background: #ff7049; }
 
   /* ── RESPONSIVE ───────────────────────────────────────────── */
   @media (max-width: 640px) {
