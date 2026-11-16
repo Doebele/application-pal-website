@@ -6,7 +6,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 const GITHUB_URL = 'https://github.com/Doebele/application-pal';
 
 // Current desktop release. Update VERSION (and the sizes) here when a new version ships.
-const VERSION = '0.2.1';
+const VERSION = '0.3.0';
 const RELEASE_TAG = `desktop-v${VERSION}`;
 const RELEASE_BASE = `https://github.com/Doebele/application-pal/releases/download/${RELEASE_TAG}`;
 const RELEASES_URL = 'https://github.com/Doebele/application-pal/releases';
@@ -270,7 +270,8 @@ const platforms = [
   }
   .platform-title { font-size: 1rem; font-weight: 600; color: var(--text); }
   .platform-hint { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem; }
-  .platform-file { font-size: 0.85rem; }
+  .platform-file { font-size: 0.85rem; color: var(--text-muted); }
+  .platform-size { font-family: var(--font-mono); font-size: 0.78rem; }
   .platform-file code { font-size: 0.78rem; word-break: break-all; }
 
   .reco {
