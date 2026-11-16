@@ -305,6 +305,9 @@ const platforms = [
     margin-top: auto;
     transition: background 0.15s;
   }
+  /* Astro's scoped .step-section a rule (higher specificity) would paint the
+     label accent-on-accent — pin the ink text explicitly */
+  .platform-card .btn-primary { color: #0b0b0c; }
   .btn-primary:hover { background: #ff7049; text-decoration: none; }
 
   /* ── First launch ───────────────────────────────────────── */
