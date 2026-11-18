@@ -6,7 +6,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 const GITHUB_URL = 'https://github.com/Doebele/application-pal';
 
 // Current desktop release. Update VERSION (and the sizes) here when a new version ships.
-const VERSION = '0.3.0';
+const VERSION = '0.4.0';
 const RELEASE_TAG = `desktop-v${VERSION}`;
 const RELEASE_BASE = `https://github.com/Doebele/application-pal/releases/download/${RELEASE_TAG}`;
 const RELEASES_URL = 'https://github.com/Doebele/application-pal/releases';
@@ -19,8 +19,7 @@ const platforms = [
     icon: 'apple-mac',
     title: 'Mac · Apple Silicon',
     file: `Apply-Pal_${VERSION}_aarch64.dmg`,
-    size: '58 MB',
-    hint: 'macOS on M-series chips (M1 and later)',
+    hint: 'macOS on M-series chips (M1 and later) · signed & notarized',
   },
   {
     id: 'mac-intel',
@@ -29,8 +28,8 @@ const platforms = [
     icon: 'apple-mac',
     title: 'Mac · Intel',
     file: `Apply-Pal_${VERSION}_x64.dmg`,
-    size: '62 MB',
-    hint: 'macOS on Intel Macs',
+    size: '63 MB',
+    hint: 'legacy macOS on Intel Macs · signed & notarized',
   },
   {
     id: 'windows',
@@ -39,7 +38,6 @@ const platforms = [
     icon: 'app-window',
     title: 'Windows',
     file: `Apply-Pal_${VERSION}_x64-setup.exe`,
-    size: '53 MB',
     hint: 'Windows 10 / 11 · 64-bit',
   },
 ];
@@ -92,7 +90,7 @@ const platforms = [
                 </div>
                 <span class="reco">Recommended for your system</span>
               </div>
-              <div class="platform-file"><code>{p.file}</code> · {p.size}</div>
+              <div class="platform-file"><code>{p.file}</code>{p.size && <span class="platform-size"> · {p.size}</span>}</div>
               <a class="btn-primary" href={`${RELEASE_BASE}/${p.file}`} download>
                 <Icon name="download-circle" size={16} />
                 Download
@@ -102,12 +100,16 @@ const platforms = [
         </div>
         <p>
           Looking for another or an earlier version? See
-          <a href={RELEASES_URL} target="_blank" rel="noopener">all releases</a> on GitHub —
+          <a href={RELEASES_URL} target="_blank" rel="noopener">all releases</a> on GitHub, or link
+          straight to the
+          <a href="https://github.com/Doebele/application-pal/releases/latest" target="_blank" rel="noopener">latest release</a> —
           this page points at <code>{RELEASE_TAG}</code>.
         </p>
         <p class="note">
-          New in desktop 0.3.0: after the first launch, the built-in overview explains every
-          screen — and guided tours set up your AI model and Google step by step.
+          New in desktop 0.4.0: a mode built for school leavers — a simpler app, letters for
+          taster apprenticeships and apprenticeships, and gentle career-choice ideas. Already
+          installed? The app updates itself: accept the dialog on launch, or use
+          <strong>Settings → Check for updates</strong>.
         </p>
       </section>
 
@@ -129,9 +131,9 @@ const platforms = [
           <div class="launch-card">
             <h3><Icon name="app-window" size={18} /> Windows</h3>
             <p>
-              The Windows installer is not code-signed yet, so SmartScreen shows
-              <strong>“Windows protected your PC”</strong>. Click <strong>“More info”</strong>,
-              then <strong>“Run anyway”</strong>.
+              The Windows installer is not code-signed yet, so SmartScreen warns about an
+              <strong>unknown publisher</strong>. Click <strong>“More info”</strong>, then
+              <strong>“Run anyway”</strong> — the app runs fine.
             </p>
           </div>
         </div>
@@ -147,7 +149,7 @@ const platforms = [
           <li><strong>Data stays local</strong> — stored on your computer; it only goes to Google or an AI provider if you connect one</li>
           <li><strong>Multiple profiles</strong> — several people can use the app on one computer</li>
           <li><strong>Setup wizard</strong> — Google and your AI provider are configured on first launch</li>
-          <li><strong>Automatic updates</strong> — installed apps update themselves</li>
+          <li><strong>Automatic updates</strong> — the app updates itself: accept the dialog on launch, or use Settings → Check for updates</li>
         </ul>
       </section>
 
